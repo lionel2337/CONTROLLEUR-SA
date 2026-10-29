@@ -1,0 +1,38 @@
+{
+  "name": "Yalo Glam's - Client & Réservation",
+  "short_name": "Yalo Glam's",
+  "description": "Réservation de Rendez-vous & Galerie Coiffures Yalo Glam's",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": "./reservation.html",
+  "scope": "./",
+  "background_color": "#120009",
+  "theme_color": "#2b0216",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "lang": "fr"
+}

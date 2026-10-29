@@ -1,0 +1,74 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Basic string validation
+    function isValidString(text) {
+      return text is string && text.size() > 0;
+    }
+
+    // Prestations (services)
+    match /services/{serviceId} {
+      allow read: if true;
+      allow create, update: if isValidString(request.resource.data.name) && request.resource.data.price >= 0;
+      allow delete: if true;
+    }
+
+    // Transactions 
+    match /transactions/{transactionId} {
+      allow read: if true;
+      allow create: if request.resource.data.price >= 0 
+                    && isValidString(request.resource.data.serviceName) 
+                    && isValidString(request.resource.data.employeeName)
+                    && isValidString(request.resource.data.salonId);
+      allow delete: if true;
+      allow update: if false; 
+    }
+
+    // Réservations en ligne
+    match /reservations/{reservationId} {
+      allow read: if true;
+      allow create: if request.resource.data.status in ['pending', 'confirmed', 'completed', 'cancelled']
+                    && request.resource.data.price >= 0;
+      allow update: if request.resource.data.status in ['pending', 'confirmed', 'completed', 'cancelled']
+                    && request.resource.data.price >= 0;
+      allow delete: if true;
+    }
+
+    // Dépenses du salon
+    match /expenses/{expenseId} {
+      allow read: if true;
+      allow create: if request.resource.data.amount > 0 
+                    && isValidString(request.resource.data.reason)
+                    && isValidString(request.resource.data.salonId);
+      allow update: if request.resource.data.amount > 0 
+                    && isValidString(request.resource.data.reason)
+                    && isValidString(request.resource.data.salonId);
+      allow delete: if true;
+    }
+
+    // Pointage des présences
+    match /presences/{presenceId} {
+      allow read: if true;
+      allow create: if isValidString(request.resource.data.employeeName) 
+                    && isValidString(request.resource.data.salonId)
+                    && isValidString(request.resource.data.date);
+      allow delete: if true;
+      allow update: if false; 
+    }
+
+    // Codes secrets de présence quotidiens
+    match /presence_codes/{codeId} {
+      allow read, write: if true; 
+    }
+
+    // Clients (Fidélité)
+    match /clients/{clientId} {
+      allow read: if true;
+      allow create, update: if request.resource.data.coiffuresCount >= 0 
+                            && request.resource.data.pedicuresCount >= 0 
+                            && request.resource.data.soinsVisageCount >= 0;
+      allow delete: if true;
+    }
+  }
+}

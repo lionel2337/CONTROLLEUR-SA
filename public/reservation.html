@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Yalo Glam's - Salon de Coiffure &amp; Esthétique Haute Gamme</title>
+
+<!-- PWA Manifest & App Meta Tags -->
+<link rel="manifest" href="manifest-client.json">
+<meta name="theme-color" content="#2b0216">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Yalo Glam's">
+<link rel="apple-touch-icon" href="icon-192.png">
+
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              wine: '#240615',
+              darkwine: '#18030e',
+              card: '#350a20',
+              input: '#2c081b',
+              gold: '#e6c373',
+              goldLight: '#fae3a2',
+              goldDark: '#b99540',
+              goldGlow: '#d4af37'
+            }
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif']
+          },
+          boxShadow: {
+            'gold-sm': '0 2px 10px rgba(230, 195, 115, 0.15)',
+            'gold-glow': '0 4px 20px rgba(230, 195, 115, 0.35)',
+            'inner-wine': 'inset 0 2px 4px rgba(0, 0, 0, 0.4)'
+          }
+        }
+      }
+    }
+  </script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style data-purpose="custom-scrollbars-and-resets">
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    
+    input, textarea, select {
+      -webkit-user-select: text !important;
+      user-select: text !important;
+      pointer-events: auto !important;
+      touch-action: manipulation !important;
+    }
+
+    body {
+      -webkit-tap-highlight-color: transparent;
+      background-color: #1a030f;
+    }
+    .view-transition {
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+</style>
+</head>
+<body class="h-full font-sans text-gray-100 antialiased bg-[#1a030f] selection:bg-[#e6c373] selection:text-[#18030e]">
+<!-- Mobile App Frame Container -->
+<div class="max-w-md mx-auto min-h-screen flex flex-col bg-gradient-to-b from-[#250516] via-[#1d0411] to-[#12010b] shadow-2xl relative pb-28">
+<!-- BEGIN: TopBarStatus -->
+<div class="pt-2 px-6 flex justify-between items-center text-xs font-semibold text-brand-gold/70" data-purpose="status-bar-indicators">
+<span id="current-clock">14:10</span>
+<div class="flex items-center space-x-2">
+<span>4G</span>
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 18.25l1.42 1.42 1.06-.64C8.36 20.25 10.1 21 12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z"></path></svg>
+<svg class="w-4 h-3.5 fill-current" viewbox="0 0 24 24"><path d="M17 4h-3V2h-4v2H7v18h10V4z"></path></svg>
+</div>
+</div>
+<!-- END: TopBarStatus -->
+<!-- BEGIN: BrandHeader -->
+<header class="flex flex-col items-center pt-3 pb-4 px-4 text-center cursor-pointer" data-purpose="salon-identity" onclick="switchView('booking')">
+<div class="w-24 h-20 rounded-2xl bg-gradient-to-b from-white via-amber-50 to-amber-100 p-2 shadow-lg flex flex-col items-center justify-center border border-amber-200/40 transform hover:scale-105 transition duration-300">
+<div class="flex items-center justify-center font-serif text-3xl font-bold tracking-tighter text-[#926c27] leading-none">
+<span class="italic text-4xl mr-0.5">Y</span><span>G</span>
+</div>
+<span class="text-[9px] font-bold tracking-widest text-[#9b7228] uppercase mt-1">Yalo Glam's</span>
+</div>
+<h1 class="text-3xl font-serif font-bold text-brand-gold mt-3 tracking-wide drop-shadow-sm">
+      Yalo Glam's
+    </h1>
+<p class="text-xs tracking-wider text-amber-200/80 font-light uppercase mt-1 max-w-[280px]">
+      Salon de Coiffure &amp; Esthétique Haute Gamme
+    </p>
+</header>
+<!-- END: BrandHeader -->
+<!-- BEGIN: MainContent -->
+<main class="flex-1 px-4 space-y-4">
+<!-- BEGIN: UserWelcomeCard -->
+<section class="bg-brand-card/75 backdrop-blur-md rounded-2xl p-4 border border-amber-500/20 shadow-lg text-center" data-purpose="user-greeting">
+<div class="flex items-center justify-center gap-1.5 text-base font-semibold text-amber-100">
+<span class="text-lg">👋</span>
+<span>Bienvenue, <strong class="text-brand-gold font-bold" id="greeting-name">Steve Lionel</strong></span>
+</div>
+<div class="text-xs text-amber-200/70 mt-0.5 font-medium" id="greeting-location">(Nkoabang)</div>
+<div class="mt-3">
+<button class="w-full py-2 px-4 rounded-xl bg-brand-wine/80 hover:bg-brand-wine border border-amber-400/25 text-brand-gold text-xs font-semibold inline-flex items-center justify-center gap-1.5 transition active:scale-95 shadow-inner" id="open-profile-btn" onclick="openProfileModal()" type="button">
+<span>✏️</span>
+<span>Mes Infos</span>
+</button>
+</div>
+</section>
+<!-- END: UserWelcomeCard -->
+<!-- BEGIN: NavigationTabs -->
+<nav aria-label="Sections principales" class="grid grid-cols-2 gap-3" data-purpose="primary-tabs">
+<button class="py-3 px-3 rounded-2xl bg-[#521334] border-2 border-brand-gold text-brand-goldLight text-xs font-bold flex items-center justify-center gap-2 shadow-gold-sm transition-all" id="tab-btn-booking" onclick="switchView('booking')" type="button">
+<span class="text-base">📅</span>
+<span>Prise de RDV</span>
+</button>
+<button class="py-3 px-3 rounded-2xl bg-brand-card/80 hover:bg-brand-card border border-amber-500/20 text-gray-200 text-xs font-medium flex items-center justify-center gap-2 transition hover:text-brand-gold" id="tab-btn-gallery" onclick="switchView('gallery')" type="button">
+<span class="text-base">📸</span>
+<span>Galerie &amp; Coiffures</span>
+</button>
+</nav>
+<!-- END: NavigationTabs -->
+<!-- ============================================== -->
+<!-- VIEW 1: RESERVATION / PRISE DE RDV VIEW       -->
+<!-- ============================================== -->
+<div class="space-y-4 view-transition opacity-100 block" id="view-booking">
+<!-- BEGIN: Step1SalonSelection -->
+<section class="bg-brand-card/60 backdrop-blur-sm rounded-2xl p-4 border border-amber-500/15 space-y-3" data-purpose="step-salon-location">
+<div class="flex items-center gap-2.5">
+<span class="w-6 h-6 rounded-full bg-brand-gold text-brand-darkwine font-bold text-xs flex items-center justify-center shadow-md">1</span>
+<h2 class="text-sm font-bold text-amber-100">Choisissez votre Salon Yalo Glam's</h2>
+</div>
+<div class="grid grid-cols-1 gap-2.5 pt-1">
+<!-- Option Shakespeare -->
+<div class="p-3.5 rounded-xl border-2 border-brand-gold bg-[#420f2b] cursor-pointer transition active:scale-[0.99] flex flex-col gap-1.5 shadow-gold-sm" id="salon-card-shakespeare" onclick="selectSalon('shakespeare')">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5 text-xs text-amber-100 font-bold">
+<span class="text-red-400 text-sm">📍</span>
+<span>Yalo Glam's Shakespeare</span>
+</div>
+<span class="w-4 h-4 rounded-full border-2 border-brand-gold flex items-center justify-center bg-brand-gold" id="radio-indicator-shakespeare">
+<span class="w-2 h-2 rounded-full bg-brand-darkwine"></span>
+</span>
+</div>
+<p class="text-[11px] text-amber-200/70 pl-6">Carrefour Shakespeare, Yaoundé • 08h00 - 20h30</p>
+<div class="flex items-center gap-2 pl-6 text-[10px] text-emerald-400 font-medium">
+<span>● Ouvert actuellement</span>
+<span>• 📱 696595178 (Numéro Superviseur)</span>
+</div>
+</div>
+<!-- Option Opep -->
+<div class="p-3.5 rounded-xl border border-amber-400/20 bg-brand-input/50 hover:border-amber-400/40 cursor-pointer transition active:scale-[0.99] flex flex-col gap-1.5" id="salon-card-opep" onclick="selectSalon('opep')">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5 text-xs text-gray-300 font-medium">
+<span class="text-red-400 text-sm">📍</span>
+<span>Yalo Glam's Opep</span>
+</div>
+<span class="w-4 h-4 rounded-full border-2 border-amber-500/50 flex items-center justify-center bg-brand-wine" id="radio-indicator-opep">
+<span class="w-2 h-2 rounded-full hidden bg-brand-darkwine"></span>
+</span>
+</div>
+<p class="text-[11px] text-amber-200/60 pl-6">Carrefour Opep, Mimboman • 08h30 - 21h00</p>
+<div class="flex items-center gap-2 pl-6 text-[10px] text-emerald-400/80 font-medium">
+<span>● Ouvert actuellement</span>
+<span>• 📱 696595178 (Numéro Superviseur)</span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Step1SalonSelection -->
+<!-- BEGIN: Step2ServicesSelection -->
+<section class="bg-brand-card/60 backdrop-blur-sm rounded-2xl p-4 border border-amber-500/15 space-y-3.5" data-purpose="step-services-selection">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-6 h-6 rounded-full bg-brand-gold text-brand-darkwine font-bold text-xs flex items-center justify-center shadow-md">2</span>
+<h2 class="text-sm font-bold text-amber-100">Choisissez la Prestation</h2>
+</div>
+<span class="text-[10px] bg-brand-wine px-2 py-0.5 rounded-full border border-amber-400/30 text-brand-gold" id="category-badge">Hommes</span>
+</div>
+<!-- Gender / Service Filter Pills -->
+<div class="flex flex-col items-center gap-2 py-1">
+<!-- Active Pill: Hommes -->
+<button class="w-full max-w-[200px] py-2 px-4 rounded-full bg-brand-gold text-brand-darkwine text-xs font-bold flex items-center justify-center gap-2 shadow-gold-glow transition" id="btn-cat-hommes" onclick="selectCategory('hommes')" type="button">
+<span>👨</span>
+<span>Hommes</span>
+</button>
+<!-- Pill: Femmes -->
+<button class="w-full max-w-[200px] py-2 px-4 rounded-full bg-brand-wine/90 border border-amber-500/30 text-amber-200/90 text-xs font-semibold flex items-center justify-center gap-2 hover:bg-brand-card transition" id="btn-cat-femmes" onclick="selectCategory('femmes')" type="button">
+<span>👩</span>
+<span>Femmes</span>
+</button>
+<!-- Pill: Packs -->
+<button class="w-full max-w-[200px] py-2 px-4 rounded-full bg-brand-wine/90 border border-amber-500/30 text-amber-200/90 text-xs font-semibold flex items-center justify-center gap-2 hover:bg-brand-card transition" id="btn-cat-packs" onclick="selectCategory('packs')" type="button">
+<span>🎁</span>
+<span>Packs</span>
+</button>
+</div>
+<!-- Dynamic Services Price List Container -->
+
+<!-- Dynamic Preview Image Component -->
+<div id="booking-preview-card" class="my-4 rounded-2xl overflow-hidden border border-amber-500/30 bg-[#240616] shadow-lg transition-all duration-300">
+  <div class="relative h-52 w-full bg-neutral-900">
+    <img id="booking-preview-img" src="Prestation/Coiffure avec Black par Aimerant.jpeg" alt="Preview Modèle" class="w-full h-full object-cover transition-all duration-300">
+    <span id="booking-preview-badge" class="absolute top-3 right-3 bg-black/80 backdrop-blur-sm border border-amber-400/30 text-amber-300 text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1 shadow">
+      💈 Modèle Coiffure Homme
+    </span>
+  </div>
+  <div id="booking-employee-attribution" class="p-3 text-center text-sm font-semibold text-brand-gold bg-brand-wine/80 border-t border-amber-500/20">
+    ✂️ Fait par : Premier coiffeur/coiffeuse disponible
+  </div>
+</div>
+
+<div class="space-y-2 pt-1 max-h-[280px] overflow-y-auto no-scrollbar pr-1" data-purpose="service-items-list" id="services-container">
+<!-- Injected via JavaScript -->
+</div>
+</section>
+<!-- END: Step2ServicesSelection -->
+<!-- BEGIN: HairstyleSpotlightCard -->
+<section class="bg-brand-card/60 backdrop-blur-sm rounded-2xl p-4 border border-amber-500/15 space-y-3" data-purpose="hairstyles-preview">
+<div class="flex items-center justify-between">
+<h3 class="text-xs font-bold uppercase tracking-wider text-brand-gold">Tendances &amp; Créations</h3>
+<button class="text-[11px] text-amber-300 font-semibold underline hover:text-white transition" onclick="switchView('gallery')">Voir toute la galerie →</button>
+</div>
+<article class="bg-[#240616] rounded-xl overflow-hidden border border-amber-500/20 shadow-md">
+<div class="relative h-48 w-full bg-neutral-900">
+<img alt="Tresses Américaines Premium" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7TYcb0-J96c88TJllbjUMSkTW4fptm0BkaW8dSTKlrRojgoEvLRQw8ygcg7BNwrALrdp9iTSvC6I-xyVhBB7TSaIoYAJKP2krmmYoVgXl7_-hv9phott-cuxaCKOHwYwoEjE3OX98w6Ba8je2uqq571rdtL27Ef1yTwr-zlatfQ43ciGOTyaBhAt6KAeDW9uP3XndOcdymZ04nr3opaQpPl3E7QWs43PD5uURCB_1VeLF2FJ7uCU8RXKAHHNeYDzpdA"/>
+<span class="absolute top-2.5 right-2.5 bg-black/75 backdrop-blur-sm border border-amber-400/30 text-amber-300 text-[10px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1 shadow">
+<span>👩</span> Femme
+            </span>
+</div>
+<div class="p-3.5 space-y-2">
+<h4 class="text-sm font-bold text-brand-gold">Tresses Américaines Premium</h4>
+<p class="text-[11px] text-gray-300 leading-relaxed font-light">
+              Tresses américaines plaquées avec nattes bouclées en cascade et tracé géométrique soigné.
+            </p>
+<div class="flex items-center justify-between pt-2 border-t border-amber-500/15">
+<span class="text-xs font-semibold text-brand-goldLight">5000 F CFA</span>
+<button class="py-1.5 px-3 rounded-full bg-brand-gold hover:bg-brand-goldLight text-brand-darkwine text-xs font-bold flex items-center gap-1.5 shadow active:scale-95 transition" onclick="bookSpecificService('femmes', 'Tresses Américaines', '5000 F')" type="button">
+<span>📅</span>
+<span>Réserver ce modèle</span>
+</button>
+</div>
+</div>
+</article>
+</section>
+<!-- END: HairstyleSpotlightCard -->
+<!-- BEGIN: Step3StaffSelection -->
+<section class="bg-brand-card/60 backdrop-blur-sm rounded-2xl p-4 border border-amber-500/15 space-y-3" data-purpose="step-stylist-selection">
+<div class="flex items-center gap-2.5">
+<span class="w-6 h-6 rounded-full bg-brand-gold text-brand-darkwine font-bold text-xs flex items-center justify-center shadow-md">3</span>
+<h2 class="text-sm font-bold text-amber-100">Coiffeur / Coiffeuse souhaité(e)</h2>
+</div>
+<div class="relative">
+<select class="w-full bg-white text-gray-800 text-xs font-semibold rounded-xl py-3 px-3.5 appearance-none focus:outline-none focus:ring-2 focus:ring-brand-gold border-none shadow-sm cursor-pointer pr-10" id="select-stylist">
+<option value="Premier disponible">Premier disponible (Recommandé)</option>
+<option value="Junior Styliste">Junior Styliste (Expert Dégradé &amp; Barbe)</option>
+<option value="Maître Coiffeur">Maître Coiffeur (Finitions Haut de Gamme)</option>
+<option value="Spécialiste Dreadlocks">Spécialiste Dreadlocks &amp; Nattes Dames</option>
+<option value="Esthéticienne VIP">Esthéticienne VIP (Soins Visage &amp; Bien-être)</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-600">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+</div>
+</section>
+<!-- END: Step3StaffSelection -->
+
+<!-- BEGIN: StepSpecialRequests -->
+<section class="bg-brand-card/60 backdrop-blur-sm rounded-2xl p-5 border border-amber-500/15 space-y-4" data-purpose="step-special-requests">
+  <div class="flex items-center gap-2.5">
+    <span class="w-7 h-7 rounded-full bg-brand-gold text-brand-darkwine font-bold text-sm flex items-center justify-center shadow-md">4</span>
+    <h2 class="text-base font-bold text-amber-100">Demandes Spéciales & Soins Optionnels</h2>
+  </div>
+  
+  <!-- Hint Message Box -->
+  <div id="special-hint-box" class="p-3.5 rounded-xl bg-amber-500/10 border border-amber-400/30 text-sm text-amber-100 flex items-start justify-between gap-3">
+    <div class="space-y-1">
+      <span class="font-bold text-brand-gold">💡 Besoin d'un soin particulier ?</span>
+      <p class="text-xs text-amber-200/90 leading-relaxed">
+        Si vous souhaitez un shampooing pour le traitement des pellicules, un masque réparateur ou tout autre soin spécifique, décrivez-le ici lors de votre réservation.
+      </p>
+    </div>
+    <button type="button" onclick="dismissSpecialHint()" class="py-1.5 px-3.5 rounded-xl bg-brand-gold text-brand-darkwine text-xs font-bold whitespace-nowrap shadow hover:brightness-105 active:scale-95 transition">
+      D'accord 👍
+    </button>
+  </div>
+
+  <textarea id="input-special-requests" rows="3" class="w-full bg-white text-gray-900 text-sm font-semibold rounded-xl p-3.5 border-none focus:ring-2 focus:ring-brand-gold placeholder:text-gray-400" placeholder="Ex: Je souhaite un shampooing spécial pour le traitement des pellicules lors de mon passage..."></textarea>
+</section>
+<!-- END: StepSpecialRequests -->
+
+<!-- BEGIN: Step4DateTimeSelection -->
+<section class="bg-brand-card/60 backdrop-blur-sm rounded-2xl p-4 border border-amber-500/15 space-y-3.5" data-purpose="step-date-and-time">
+<div class="flex items-center gap-2.5">
+<span class="w-7 h-7 rounded-full bg-brand-gold text-brand-darkwine font-bold text-sm flex items-center justify-center shadow-md">5</span>
+<h2 class="text-base font-bold text-amber-100">Date et Heure du Rendez-vous</h2>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="space-y-1.5">
+<label class="block text-xs font-semibold text-amber-200">Date :</label>
+<input class="w-full bg-white text-gray-900 text-xs font-bold rounded-xl py-2.5 px-3 border-none focus:ring-2 focus:ring-brand-gold" id="input-date" type="date" value="2026-09-12"/>
+</div>
+<div class="space-y-1.5">
+<label class="block text-xs font-semibold text-amber-200">Heure du RDV :</label>
+<input class="w-full bg-white text-gray-900 text-xs font-bold rounded-xl py-2.5 px-3 focus:ring-2 focus:ring-brand-gold border-none cursor-pointer" id="select-time" type="time" value="14:00" />
+</div>
+</div>
+</div>
+</section>
+<!-- END: Step4DateTimeSelection -->
+<!-- BEGIN: Step5CustomerDetails -->
+<section class="bg-brand-card/60 backdrop-blur-sm rounded-2xl p-4 border border-amber-500/15 space-y-3.5" data-purpose="step-customer-information">
+<div class="flex items-center gap-2.5">
+<span class="w-7 h-7 rounded-full bg-brand-gold text-brand-darkwine font-bold text-sm flex items-center justify-center shadow-md">6</span>
+<h2 class="text-base font-bold text-amber-100">Vos Coordonnées de Confirmation</h2>
+</div>
+<div class="space-y-3 pt-1">
+<div class="space-y-1">
+<label class="block text-xs font-medium text-amber-200">Nom &amp; Prénom *</label>
+<input class="w-full bg-white text-gray-900 text-xs font-semibold rounded-xl py-2.5 px-3.5 border-none focus:ring-2 focus:ring-brand-gold shadow-inner" id="input-customer-name" placeholder="Votre nom complet" type="text" value="Steve Lionel"/>
+</div>
+<div class="space-y-1">
+<label class="block text-xs font-medium text-amber-200">Quartier *</label>
+<input class="w-full bg-white text-gray-900 text-xs font-semibold rounded-xl py-2.5 px-3.5 border-none focus:ring-2 focus:ring-brand-gold shadow-inner" id="input-customer-quartier" placeholder="Votre quartier de résidence" type="text" value="Nkoabang"/>
+</div>
+<div class="space-y-1">
+<label class="block text-xs font-medium text-amber-200 flex items-center justify-between">
+<span>Téléphone / WhatsApp *</span>
+<span class="text-[10px] text-emerald-400 font-bold">Confirmation WhatsApp</span>
+</label>
+<div class="relative">
+<input class="w-full bg-white text-gray-900 text-xs font-bold tracking-wider rounded-xl py-2.5 px-3.5 border-none focus:ring-2 focus:ring-brand-gold shadow-inner" id="input-customer-phone" placeholder="6XX XX XX XX" type="tel" value="690731839"/>
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-emerald-600 font-bold text-xs">
+                WhatsApp
+              </div>
+</div>
+</div>
+
+<!-- Choice of Mode: Booking vs Presence -->
+<div class="space-y-1.5 pt-2 border-t border-amber-500/20">
+  <label class="block text-xs font-bold text-brand-gold">Choisissez le type de demande :</label>
+  <div class="grid grid-cols-2 gap-2">
+    <button type="button" id="btn-mode-rdv" onclick="selectBookingMode('rdv')" class="py-2.5 px-2 rounded-xl bg-brand-gold text-brand-darkwine text-xs font-bold flex flex-col items-center justify-center border border-amber-400 shadow-md transition">
+      <span>📅 Réservation RDV</span>
+      <span class="text-[9px] font-normal opacity-80">(Pour plus tard)</span>
+    </button>
+    <button type="button" id="btn-mode-presence" onclick="selectBookingMode('presence')" class="py-2.5 px-2 rounded-xl bg-brand-wine/90 border border-amber-500/30 text-amber-200 text-xs font-semibold flex flex-col items-center justify-center hover:bg-brand-card transition">
+      <span>📍 Marquer ma Prestation</span>
+      <span class="text-[9px] font-normal opacity-80">(Déjà au salon)</span>
+    </button>
+  </div>
+</div>
+</div>
+</section>
+<!-- END: Step5CustomerDetails -->
+<!-- Summary Card Before Confirm -->
+<section class="p-3.5 rounded-2xl bg-brand-wine/90 border border-brand-gold/30 text-xs space-y-2 text-amber-100">
+<div class="flex justify-between items-center text-brand-gold font-bold">
+<span>Récapitulatif express :</span>
+<span class="text-sm font-extrabold text-amber-200 font-mono" id="summary-price">1000 F CFA</span>
+</div>
+<div class="text-[11px] text-gray-300 space-y-0.5">
+<div>• Salon : <strong class="text-white" id="summary-salon">Yalo Glam's Shakespeare</strong></div>
+<div>• Prestation : <strong class="text-white" id="summary-service">Coiffure (Hommes)</strong></div>
+<div>• Date &amp; Heure : <strong class="text-white" id="summary-datetime">12/09/2026 à 14:00</strong></div>
+</div>
+</section>
+<!-- BEGIN: SubmitCTA -->
+<section class="pt-2 pb-2" data-purpose="reservation-cta">
+<button class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-brand-gold via-[#fae19b] to-brand-goldDark text-brand-darkwine font-extrabold text-sm uppercase tracking-wider shadow-gold-glow hover:brightness-105 active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 border border-amber-200/50" id="confirm-booking-btn" onclick="handleBookingSubmit()" type="button">
+<span>Confirmer ma Réservation</span>
+<svg class="w-4 h-4 stroke-[2.5]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+</section>
+<!-- END: SubmitCTA -->
+</div>
+<!-- END VIEW 1: BOOKING -->
+<!-- ============================================== -->
+<!-- VIEW 2: GALERIE & COIFFURES VIEW              -->
+<!-- ============================================== -->
+<div class="space-y-4 view-transition hidden" id="view-gallery">
+<section class="bg-brand-card/75 backdrop-blur-md rounded-2xl p-4 border border-amber-500/20 shadow-lg">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="text-lg font-serif font-bold text-brand-gold">Galerie de Réalisations</h2>
+<p class="text-xs text-amber-200/70">Les chefs-d’œuvre coiffure de Yalo Glam's</p>
+</div>
+<span class="text-2xl">✨</span>
+</div>
+</section>
+<!-- Filter Gallery Tags -->
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+<button class="gallery-pill active py-1.5 px-4 rounded-full bg-brand-gold text-brand-darkwine text-xs font-bold whitespace-nowrap shadow transition" onclick="filterGallery('all')">Tous les modèles</button>
+<button class="gallery-pill py-1.5 px-4 rounded-full bg-brand-wine/80 border border-amber-400/30 text-amber-200 text-xs font-semibold whitespace-nowrap hover:bg-brand-card transition" onclick="filterGallery('femme')">Dames &amp; Tresses</button>
+<button class="gallery-pill py-1.5 px-4 rounded-full bg-brand-wine/80 border border-amber-400/30 text-amber-200 text-xs font-semibold whitespace-nowrap hover:bg-brand-card transition" onclick="filterGallery('locks')">Dreadlocks &amp; Nattes</button>
+<button class="gallery-pill py-1.5 px-4 rounded-full bg-brand-wine/80 border border-amber-400/30 text-amber-200 text-xs font-semibold whitespace-nowrap hover:bg-brand-card transition" onclick="filterGallery('homme')">Hommes &amp; Dégradés</button>
+</div>
+<!-- Gallery Cards Grid -->
+<div class="space-y-6">
+  <!-- Card 1: Tresses Américaines Premium -->
+  <article class="gallery-item-card femme bg-[#240616] rounded-2xl overflow-hidden border border-amber-500/20 shadow-xl" data-tags="femme">
+    <div class="relative h-64 w-full bg-neutral-900">
+      <img alt="Tresses Américaines" class="w-full h-full object-cover" src="Prestation/Traisse Americaine par Clarisse.jpeg"/>
+      <span class="absolute top-3 left-3 bg-black/80 backdrop-blur-md border border-amber-400/30 text-amber-300 text-xs font-bold px-3 py-1.5 rounded-full shadow">
+        👩 Coiffure Dame
+      </span>
+      <span class="absolute top-3 right-3 bg-brand-gold text-brand-darkwine font-bold text-xs px-3.5 py-1.5 rounded-full shadow">
+        5000 F CFA
+      </span>
+    </div>
+    <div class="p-4 space-y-3">
+      <h3 class="text-base font-bold text-brand-gold">Tresses Américaines Premium</h3>
+      <p class="text-xs text-gray-300 leading-relaxed font-light">
+        Nattes plaquées américaines géométriques avec pointes bouclées en cascade d'une brillance extrême.
+      </p>
+      <div class="pt-3 border-t border-amber-500/15 flex items-center justify-between gap-2">
+        <div class="text-xs text-brand-gold font-semibold">✂️ Fait par : Clarisse (Coiffeuse)</div>
+        <div class="flex gap-2">
+          <button class="py-2 px-3 rounded-xl bg-amber-500/20 text-brand-gold text-xs font-bold border border-amber-500/30 hover:bg-amber-500/30 transition" onclick="switchView('reviews')">💬 Avis</button>
+          <button class="py-2 px-4 rounded-xl bg-gradient-to-r from-brand-gold to-brand-goldDark text-brand-darkwine text-xs font-bold shadow active:scale-95 transition" onclick="bookSpecificService('femmes', 'Tresses Américaines', '5000 F')">📅 Réserver</button>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 2: Dreadlocks & Locks -->
+  <article class="gallery-item-card locks femme bg-[#240616] rounded-2xl overflow-hidden border border-amber-500/20 shadow-xl" data-tags="locks femme">
+    <div class="relative h-64 w-full bg-neutral-900">
+      <img alt="Dreadlocks & Nattes Artistiques" class="w-full h-full object-cover" src="Prestation/Dreadlocks par Aimerant.jpeg"/>
+      <span class="absolute top-3 left-3 bg-black/80 backdrop-blur-md border border-amber-400/30 text-amber-300 text-xs font-bold px-3 py-1.5 rounded-full shadow">
+        💈 Locks & Soins
+      </span>
+      <span class="absolute top-3 right-3 bg-brand-gold text-brand-darkwine font-bold text-xs px-3.5 py-1.5 rounded-full shadow">
+        5000 F CFA
+      </span>
+    </div>
+    <div class="p-4 space-y-3">
+      <h3 class="text-base font-bold text-brand-gold">Dreadlocks & Nattes Artistiques</h3>
+      <p class="text-xs text-gray-300 leading-relaxed font-light">
+        Création et entretien minutieux de locks, vanilles sculptées, et finitions nettes aux huiles nourrissantes.
+      </p>
+      <div class="pt-3 border-t border-amber-500/15 flex items-center justify-between gap-2">
+        <div class="text-xs text-brand-gold font-semibold">✂️ Fait par : Aimerant (Coiffeur)</div>
+        <div class="flex gap-2">
+          <button class="py-2 px-3 rounded-xl bg-amber-500/20 text-brand-gold text-xs font-bold border border-amber-500/30 hover:bg-amber-500/30 transition" onclick="switchView('reviews')">💬 Avis</button>
+          <button class="py-2 px-4 rounded-xl bg-gradient-to-r from-brand-gold to-brand-goldDark text-brand-darkwine text-xs font-bold shadow active:scale-95 transition" onclick="bookSpecificService('femmes', 'Dreadlocks', '5000 F')">📅 Réserver</button>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 3: Coiffure avec Black -->
+  <article class="gallery-item-card homme bg-[#240616] rounded-2xl overflow-hidden border border-amber-500/20 shadow-xl" data-tags="homme">
+    <div class="relative h-64 w-full bg-neutral-900">
+      <img alt="Coiffure avec Black" class="w-full h-full object-cover" src="Prestation/Coiffure avec Black par Aimerant.jpeg"/>
+      <span class="absolute top-3 left-3 bg-black/80 backdrop-blur-md border border-amber-400/30 text-amber-300 text-xs font-bold px-3 py-1.5 rounded-full shadow">
+        👨 Homme
+      </span>
+      <span class="absolute top-3 right-3 bg-brand-gold text-brand-darkwine font-bold text-xs px-3.5 py-1.5 rounded-full shadow">
+        1500 F CFA
+      </span>
+    </div>
+    <div class="p-4 space-y-3">
+      <h3 class="text-base font-bold text-brand-gold">Coiffure avec Black & Traçage</h3>
+      <p class="text-xs text-gray-300 leading-relaxed font-light">
+        Coupe homme soignée, application de noir au pinceau et contours travaillés au millimètre.
+      </p>
+      <div class="pt-3 border-t border-amber-500/15 flex items-center justify-between gap-2">
+        <div class="text-xs text-brand-gold font-semibold">✂️ Fait par : Aimerant (Coiffeur)</div>
+        <div class="flex gap-2">
+          <button class="py-2 px-3 rounded-xl bg-amber-500/20 text-brand-gold text-xs font-bold border border-amber-500/30 hover:bg-amber-500/30 transition" onclick="switchView('reviews')">💬 Avis</button>
+          <button class="py-2 px-4 rounded-xl bg-gradient-to-r from-brand-gold to-brand-goldDark text-brand-darkwine text-xs font-bold shadow active:scale-95 transition" onclick="bookSpecificService('hommes', 'Coiffure avec Black', '1500 F')">📅 Réserver</button>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 4: Coiffure avec Teinture -->
+  <article class="gallery-item-card homme bg-[#240616] rounded-2xl overflow-hidden border border-amber-500/20 shadow-xl" data-tags="homme">
+    <div class="relative h-64 w-full bg-neutral-900">
+      <img alt="Coiffure avec Teinture" class="w-full h-full object-cover" src="Prestation/coiffure avec Teinture par Aimerant.jpeg"/>
+      <span class="absolute top-3 left-3 bg-black/80 backdrop-blur-md border border-amber-400/30 text-amber-300 text-xs font-bold px-3 py-1.5 rounded-full shadow">
+        ✨ Teinture & Style
+      </span>
+      <span class="absolute top-3 right-3 bg-brand-gold text-brand-darkwine font-bold text-xs px-3.5 py-1.5 rounded-full shadow">
+        2500 F CFA
+      </span>
+    </div>
+    <div class="p-4 space-y-3">
+      <h3 class="text-base font-bold text-brand-gold">Coiffure avec Teinture & Dégradé</h3>
+      <p class="text-xs text-gray-300 leading-relaxed font-light">
+        Couleur éclatante dorée/blonde avec dégradé américain parfait.
+      </p>
+      <div class="pt-3 border-t border-amber-500/15 flex items-center justify-between gap-2">
+        <div class="text-xs text-brand-gold font-semibold">✂️ Fait par : Aimerant (Coiffeur)</div>
+        <div class="flex gap-2">
+          <button class="py-2 px-3 rounded-xl bg-amber-500/20 text-brand-gold text-xs font-bold border border-amber-500/30 hover:bg-amber-500/30 transition" onclick="switchView('reviews')">💬 Avis</button>
+          <button class="py-2 px-4 rounded-xl bg-gradient-to-r from-brand-gold to-brand-goldDark text-brand-darkwine text-xs font-bold shadow active:scale-95 transition" onclick="bookSpecificService('hommes', 'Coiffure avec Teinture', '2500 F')">📅 Réserver</button>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+
+<!-- ============================================== -->
+<!-- VIEW 3: AVIS & COMMUNAUTÉ CLIENT               -->
+<!-- ============================================== -->
+<div class="space-y-4 view-transition hidden" id="view-reviews">
+  <section class="bg-brand-card/75 backdrop-blur-md rounded-2xl p-4 border border-amber-500/20 shadow-lg space-y-3" data-purpose="add-review">
+    <div class="flex items-center gap-2 pb-2 border-b border-amber-500/20">
+      <span class="text-xl">💬</span>
+      <h2 class="text-sm font-bold text-brand-gold font-serif">Donnez votre avis sur le salon</h2>
+    </div>
+    <form onsubmit="handleReviewSubmit(event)" class="space-y-3">
+      <div>
+        <label class="block text-xs text-amber-200 mb-1 font-medium">Votre Nom / Pseudo :</label>
+        <input type="text" id="rev-name-input" class="w-full bg-brand-input rounded-xl px-3 py-2 text-white border border-amber-500/30 text-xs focus:border-brand-gold focus:ring-0" placeholder="Ex: Jean-Paul" required />
+      </div>
+      <div>
+        <label class="block text-xs text-amber-200 mb-1 font-medium">Note :</label>
+        <select id="rev-rating-input" class="w-full bg-brand-input rounded-xl px-3 py-2 text-white border border-amber-500/30 text-xs focus:border-brand-gold focus:ring-0">
+          <option value="5">⭐⭐⭐⭐⭐ Excellent (5/5)</option>
+          <option value="4">⭐⭐⭐⭐ Très bien (4/5)</option>
+          <option value="3">⭐⭐⭐ Correct (3/5)</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-xs text-amber-200 mb-1 font-medium">Votre commentaire :</label>
+        <textarea id="rev-comment-input" rows="3" class="w-full bg-brand-input rounded-xl px-3 py-2 text-white border border-amber-500/30 text-xs focus:border-brand-gold focus:ring-0" placeholder="Partagez votre expérience avec la communauté..." required></textarea>
+      </div>
+      <button type="submit" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-brand-gold to-brand-goldDark text-brand-darkwine font-bold text-xs shadow hover:brightness-105 active:scale-95 transition">
+        Publier mon avis
+      </button>
+    </form>
+  </section>
+
+  <!-- Liste des avis publiés -->
+  <section class="space-y-3" id="reviews-feed">
+    <div class="bg-[#240616] p-4 rounded-2xl border border-amber-500/20 space-y-2 shadow-md">
+      <div class="flex items-center justify-between text-xs">
+        <span class="font-bold text-brand-gold">Lionel M.</span>
+        <span class="text-amber-200/60">Il y a 2h • ⭐⭐⭐⭐⭐</span>
+      </div>
+      <p class="text-xs text-gray-200 leading-relaxed font-light">
+        "Accueil chaleureux chez Yalo Glam's Shakespeare. Marco a fait un dégradé impeccable avec contours au millimètre !"
+      </p>
+    </div>
+    <div class="bg-[#240616] p-4 rounded-2xl border border-amber-500/20 space-y-2 shadow-md">
+      <div class="flex items-center justify-between text-xs">
+        <span class="font-bold text-brand-gold">Carine N.</span>
+        <span class="text-amber-200/60">Hier • ⭐⭐⭐⭐⭐</span>
+      </div>
+      <p class="text-xs text-gray-200 leading-relaxed font-light">
+        "Nattes artistiques au top chez Opep avec Clarisse. Rapide, soigneux et très gentil. Je recommande !"
+      </p>
+    </div>
+  </section>
+</div>
+<!-- END VIEW 3: REVIEWS -->
+</main>
+
+<!-- ============================================== -->
+<!-- MODAL 1: PROFIL & INFORMATIONS CLIENT (EDIT)   -->
+<!-- ============================================== -->
+<div class="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm items-center justify-center p-4" id="modal-profile" style="display:none;">
+<div class="w-full max-w-sm bg-gradient-to-b from-[#2e071c] to-[#1a030f] rounded-3xl border border-amber-400/30 p-5 pb-8 shadow-2xl space-y-4 max-h-[85vh] overflow-y-auto no-scrollbar">
+<div class="flex items-center justify-between pb-2 border-b border-amber-500/20">
+<div class="flex items-center gap-2">
+<span class="text-xl">✏️</span>
+<h3 class="text-base font-serif font-bold text-brand-gold">Mon Profil &amp; Mes Infos</h3>
+</div>
+<button class="w-7 h-7 rounded-full bg-brand-wine text-gray-300 hover:text-white flex items-center justify-center font-bold text-sm" onclick="closeProfileModal()">✕</button>
+</div>
+<!-- VIP Loyalty & Paliers Status Card -->
+<div class="p-3.5 rounded-2xl bg-gradient-to-r from-amber-500/20 via-brand-card to-amber-700/20 border border-amber-400/40 space-y-3 shadow-lg">
+  <div class="flex items-center justify-between">
+    <div>
+      <div class="text-[10px] uppercase font-extrabold tracking-wider text-amber-300">Programme de Fidélité Yalo</div>
+      <div class="text-xs font-bold text-white">Vos Compteurs & Prestations Gratuites</div>
+    </div>
+    <span class="text-2xl">👑</span>
+  </div>
+
+  <!-- Alert Banner: Unlocked Reward -->
+  <div id="loyalty-alert-banner" class="hidden p-3 rounded-xl bg-gradient-to-r from-yellow-500/30 via-amber-500/30 to-yellow-600/30 border-2 border-yellow-400/70 text-center space-y-1 shadow-gold-glow">
+    <div class="text-xs font-extrabold text-yellow-300 animate-pulse" id="loyalty-alert-title">🎉 BRAVO ! VOUS AVEZ DÉBLOQUÉ VOTRE PRESTATION GRATUITE !</div>
+    <p class="text-[11px] text-amber-100 font-semibold" id="loyalty-alert-desc">Présentez cet écran en salon au coiffeur ou à la patronne pour la valider.</p>
+  </div>
+
+  <!-- 3 Compteurs de Fidélité -->
+  <div class="space-y-2 text-xs">
+    <!-- 1. Coiffure Homme (10) -->
+    <div class="space-y-1">
+      <div class="flex justify-between text-gray-200 font-medium">
+        <span>💈 Coiffures Homme</span>
+        <strong id="count-coiffure-txt" class="text-brand-gold">0 / 10</strong>
+      </div>
+      <div class="w-full h-2.5 rounded-full bg-brand-wine border border-amber-500/30 overflow-hidden shadow-inner">
+        <div id="bar-coiffure" class="h-full bg-gradient-to-r from-amber-500 to-brand-gold transition-all duration-300" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <!-- 2. Pédicure (5) -->
+    <div class="space-y-1">
+      <div class="flex justify-between text-gray-200 font-medium">
+        <span>💅 Pédicures</span>
+        <strong id="count-pedicure-txt" class="text-brand-gold">0 / 5</strong>
+      </div>
+      <div class="w-full h-2.5 rounded-full bg-brand-wine border border-amber-500/30 overflow-hidden shadow-inner">
+        <div id="bar-pedicure" class="h-full bg-gradient-to-r from-amber-500 to-brand-gold transition-all duration-300" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <!-- 3. Soin du Visage (7) -->
+    <div class="space-y-1">
+      <div class="flex justify-between text-gray-200 font-medium">
+        <span>🧴 Soins du Visage</span>
+        <strong id="count-visage-txt" class="text-brand-gold">0 / 5</strong>
+      </div>
+      <div class="w-full h-2.5 rounded-full bg-brand-wine border border-amber-500/30 overflow-hidden shadow-inner">
+        <div id="bar-visage" class="h-full bg-gradient-to-r from-amber-500 to-brand-gold transition-all duration-300" style="width: 0%;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Editable fields -->
+<form class="space-y-3 text-xs" id="profile-edit-form" onsubmit="saveProfile(event)">
+<div>
+<label class="block text-amber-200 mb-1 font-medium">Nom complet</label>
+<input class="w-full bg-brand-input rounded-xl px-3 py-2 text-white border border-amber-500/30 focus:border-brand-gold focus:ring-0 text-xs" id="modal-name-input" type="text" value="Steve Lionel"/>
+</div>
+<div>
+<label class="block text-amber-200 mb-1 font-medium">Quartier de résidence</label>
+<input class="w-full bg-brand-input rounded-xl px-3 py-2 text-white border border-amber-500/30 focus:border-brand-gold focus:ring-0 text-xs" id="modal-quartier-input" type="text" value="Nkoabang"/>
+</div>
+<div>
+<label class="block text-amber-200 mb-1 font-medium">Numéro Téléphone / WhatsApp</label>
+<input class="w-full bg-brand-input rounded-xl px-3 py-2 text-white border border-amber-500/30 focus:border-brand-gold focus:ring-0 text-xs" id="modal-phone-input" type="tel" value="690731839"/>
+</div>
+
+<!-- Bouton Téléchargement Application Mobile PWA -->
+<div class="pt-3 border-t border-amber-500/20 text-center space-y-1.5">
+  <button id="pwa-install-btn-profile" onclick="triggerPwaInstall()" type="button" class="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-amber-400 via-brand-gold to-amber-600 text-brand-darkwine font-extrabold text-xs shadow-gold-glow flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 transition">
+    <span class="text-base">📲</span>
+    <span>Télécharger l'Application Yalo Glam's sur votre téléphone</span>
+  </button>
+  <p class="text-[10px] text-amber-200/60 font-light">
+    Installez l'application directement sur l'écran d'accueil de votre téléphone pour réserver en 1 clic !
+  </p>
+</div>
+
+<!-- Appointment History preview -->
+<div class="pt-2">
+<h4 class="text-xs font-bold text-brand-gold mb-1.5">Historique récent de RDV</h4>
+<div class="space-y-1.5 text-[11px]" id="profile-history-list">
+<div class="text-amber-200/50 text-[11px] italic">Aucun rendez-vous récent.</div>
+</div>
+</div>
+<div class="pt-3 flex gap-2">
+<button class="flex-1 py-2.5 rounded-xl bg-brand-wine border border-amber-500/30 text-amber-200 font-semibold text-xs" onclick="closeProfileModal()" type="button">Annuler</button>
+<button class="flex-1 py-2.5 rounded-xl bg-brand-gold text-brand-darkwine font-bold text-xs shadow-gold-sm hover:brightness-105 transition" type="submit">Enregistrer</button>
+</div>
+</form>
+</div>
+</div>
+<!-- ============================================== -->
+<!-- MODAL 2: CONFIRMATION RDV SUCCÈS              -->
+<!-- ============================================== -->
+<div class="fixed inset-0 z-[60] bg-black/85 backdrop-blur-md items-center justify-center p-4" id="modal-success" style="display:none;">
+<div class="w-full max-w-sm bg-gradient-to-b from-[#2f081d] to-[#17020d] rounded-3xl border-2 border-brand-gold p-6 text-center space-y-4 shadow-2xl">
+<div class="w-16 h-16 rounded-full bg-brand-gold/20 border-2 border-brand-gold flex items-center justify-center text-3xl mx-auto">
+        ✨
+      </div>
+<div>
+<h3 class="text-lg font-serif font-bold text-brand-gold">Rendez-vous Confirmé !</h3>
+<p class="text-xs text-amber-100/90 mt-1">Merci pour votre confiance chez Yalo Glam's.</p>
+</div>
+<div class="bg-brand-card/90 rounded-2xl p-3 text-left text-xs space-y-1.5 border border-amber-500/20 text-gray-200">
+<div class="flex justify-between border-b border-amber-500/20 pb-1 font-bold text-brand-goldLight">
+<span>Réf. Réservation</span>
+<span id="succ-ref">#YG-8492</span>
+</div>
+<div>Client : <strong class="text-white" id="succ-name">Steve Lionel</strong></div>
+<div>Salon : <strong class="text-white" id="succ-salon">Shakespeare</strong></div>
+<div>Prestation : <strong class="text-white" id="succ-service">Coiffure</strong></div>
+<div>Coiffeur : <strong class="text-white" id="succ-stylist">Premier disponible</strong></div>
+<div>Créneau : <strong class="text-white" id="succ-time">12/09/2026 à 14:00</strong></div>
+<div class="flex justify-between pt-1 border-t border-amber-500/20 text-brand-gold font-bold">
+<span>Montant estimé :</span>
+<span id="succ-price">1000 F CFA</span>
+</div>
+</div>
+<div class="p-2.5 rounded-xl bg-emerald-950/60 border border-emerald-500/40 text-[11px] text-emerald-300 flex items-center justify-center gap-2">
+<span>📲</span>
+<span>Notification WhatsApp transmise au <strong id="succ-phone">690731839</strong></span>
+</div>
+<button class="w-full py-3 rounded-xl bg-gradient-to-r from-brand-gold to-brand-goldDark text-brand-darkwine font-extrabold text-xs uppercase tracking-wider shadow hover:brightness-105 active:scale-95 transition" onclick="closeSuccessModal()">
+        Parfait, J'ai compris
+      </button>
+</div>
+</div>
+<!-- Toast Feedback message -->
+<div class="fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-brand-gold text-brand-darkwine px-4 py-2 rounded-full font-bold text-xs shadow-gold-glow hidden transition-all duration-300 flex items-center gap-2" id="toast-message">
+<span>✅</span> <span id="toast-text">Modèle sélectionné avec succès !</span>
+</div>
+</div>
+
+<!-- ============================================== -->
+<!-- BOTTOM NAVIGATION BAR (FIXED GLOBAL)           -->
+<!-- ============================================== -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-[#1e0313]/95 backdrop-blur-lg border-t border-amber-500/30 py-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] px-6 max-w-md mx-auto shadow-2xl" data-purpose="bottom-navigation">
+  <div class="flex items-center justify-around">
+    <!-- RDV -->
+    <button id="nav-item-rdv" onclick="switchView('booking')" class="flex flex-col items-center py-1 text-brand-gold transition">
+      <div class="p-1 rounded-xl bg-brand-gold/15 mb-0.5">
+        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
+      </div>
+      <span class="text-[10px] font-bold">Réserver</span>
+    </button>
+    <!-- Galerie / Modèles -->
+    <button id="nav-item-gallery" onclick="switchView('gallery')" class="flex flex-col items-center py-1 text-amber-200/60 hover:text-brand-gold transition">
+      <div class="p-1 mb-0.5">
+        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+      </div>
+      <span class="text-[10px] font-medium">Modèles</span>
+    </button>
+    <!-- Avis -->
+    <button id="nav-item-reviews" onclick="switchView('reviews')" class="flex flex-col items-center py-1 text-amber-200/60 hover:text-brand-gold transition">
+      <div class="p-1 mb-0.5">
+        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z"/></svg>
+      </div>
+      <span class="text-[10px] font-medium">Avis</span>
+    </button>
+    <!-- Profil -->
+    <button id="nav-item-profile" onclick="openProfileModal()" class="flex flex-col items-center py-1 text-amber-200/60 hover:text-brand-gold transition">
+      <div class="p-1 mb-0.5">
+        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      </div>
+      <span class="text-[10px] font-medium">Profil</span>
+    </button>
+  </div>
+</nav>
+<!-- ============================================== -->
+<!-- JAVASCRIPT: APPLICATION INTERACTIVITY & STATE   -->
+<!-- ============================================== -->
+<script>
+  // Global Application State
+  const state = {
+    currentView: 'booking', // 'booking' | 'gallery' | 'reviews'
+    selectedSalon: 'shakespeare', // 'shakespeare' | 'opep'
+    selectedCategory: 'hommes', // 'hommes' | 'femmes' | 'packs'
+    bookingMode: 'rdv', // 'rdv' (RDV ultérieur) | 'presence' (Déjà au salon)
+    selectedService: {
+      name: 'Coiffure',
+      price: '1000 F'
+    },
+    user: {
+      name: 'Steve Lionel',
+      quartier: 'Nkoabang',
+      phone: '690731839'
+    },
+    loyalty: {
+      coiffuresCount: 0,
+      pedicuresCount: 0,
+      soinsVisageCount: 0
+    }
+  };
+
+  // Catalogue des services
+  const servicesCatalog = {
+    hommes: [
+      { id: 'h1', name: 'Traçage', price: '500 F', description: 'Tracé précis barbe & contours' },
+      { id: 'h2', name: 'Coiffure', price: '1000 F', description: 'Coupe classique ou dégradé américain' },
+      { id: 'h3', name: 'Coiffure avec Black', price: '1500 F', description: 'Coupe complète avec application de noir' },
+      { id: 'h4', name: 'Coiffure avec Teinture', price: '2500 F', description: 'Dégradé avec coloration/teinture au choix' },
+      { id: 'h5', name: 'Taille & Soin de Barbe', price: '1000 F', description: 'Taille aux ciseaux, rasage chaud & huile hydratante' },
+      { id: 'h6', name: 'Shampoing & Massage Crânien', price: '1500 F', description: 'Soin lavant relaxant et massage apaisant' }
+    ],
+    femmes: [
+      { id: 'f1', name: 'Tresses Américaines', price: '5000 F', description: 'Tresses géométriques avec cascade bouclée' },
+      { id: 'f2', name: 'Nattes Artistiques', price: '3500 F', description: 'Nattes plaquées design haute précision' },
+      { id: 'f3', name: 'Dreadlocks & Entretien', price: '10000 F', description: 'Création, resserrage et soin profond des locks' },
+      { id: 'f4', name: 'Pose Perruque Lace', price: '7000 F', description: 'Fixation, coiffage et personnalisation de lace' },
+      { id: 'f5', name: 'Coiffure Chignon Soirée', price: '8000 F', description: 'Chignon élaboré pour événement et mariages' },
+      { id: 'f6', name: 'Soin Visage & Éclat', price: '5000 F', description: 'Nettoyage de peau, gommage et masque hydratant' }
+    ],
+    packs: [
+      { id: 'p1', name: 'Pack Mariage VIP', price: '25000 F', description: 'Coiffure prestige + Soin visage complet + Barbe' },
+      { id: 'p2', name: 'Pack Détente & Fraîcheur', price: '6000 F', description: 'Shampoing traitant + Coiffure + Massage crânien' },
+      { id: 'p3', name: 'Pack Beauté Intégrale', price: '18000 F', description: 'Tresses + Soin du visage + Manucure' },
+      { id: 'p4', name: 'Pack Duo Complice', price: '12000 F', description: 'Coiffure Homme + Coiffure Femme simultanés' }
+    ]
+  };
+
+  // Salons descriptions
+  const salonNames = {
+    shakespeare: "Yalo Glam's Shakespeare",
+    opep: "Yalo Glam's Opep"
+  };
+
+  // PWA Install Prompt handling
+  let deferredPrompt = null;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+  });
+
+  function triggerPwaInstall() {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          if (typeof showToast === 'function') showToast("Installation de Yalo Glam's lancée ! 🎉");
+        }
+        deferredPrompt = null;
+      });
+    } else {
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+      if (isIOS) {
+        if (typeof showToast === 'function') showToast("iPhone : Appuyez sur Partager 📤 ➔ Sur l'écran d'accueil ➕");
+      } else {
+        if (typeof showToast === 'function') showToast("Menu du navigateur (3 points ⋮) ➔ Installer l'application 📲");
+      }
+    }
+  }
+
+  // On page load
+  document.addEventListener('DOMContentLoaded', () => {
+    renderServicesList();
+    updateSummary();
+    syncClientProfile();
+    
+    // Auto-update clock minute
+    setInterval(() => {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2, '0');
+      const m = String(now.getMinutes()).padStart(2, '0');
+      const clockEl = document.getElementById('current-clock');
+      if (clockEl) clockEl.textContent = `${h}:${m}`;
+    }, 15000);
+  });
+
+  // Switch between Booking, Gallery, and Reviews View
+  function switchView(viewName) {
+    state.currentView = viewName;
+    const viewBooking = document.getElementById('view-booking');
+    const viewGallery = document.getElementById('view-gallery');
+    const viewReviews = document.getElementById('view-reviews');
+    const tabBooking = document.getElementById('tab-btn-booking');
+    const tabGallery = document.getElementById('tab-btn-gallery');
+    const navRdv = document.getElementById('nav-item-rdv');
+    const navGallery = document.getElementById('nav-item-gallery');
+    const navReviews = document.getElementById('nav-item-reviews');
+
+    // Hide all views first
+    if (viewBooking) viewBooking.classList.add('hidden');
+    if (viewGallery) viewGallery.classList.add('hidden');
+    if (viewReviews) viewReviews.classList.add('hidden');
+
+    // Reset bottom nav active classes
+    const activeNavStyle = "flex flex-col items-center py-1 text-brand-gold transition";
+    const inactiveNavStyle = "flex flex-col items-center py-1 text-amber-200/60 hover:text-brand-gold transition";
+
+    if (navRdv) {
+      navRdv.className = inactiveNavStyle;
+      if (navRdv.querySelector('div')) navRdv.querySelector('div').className = "p-1 mb-0.5";
+    }
+    if (navGallery) {
+      navGallery.className = inactiveNavStyle;
+      if (navGallery.querySelector('div')) navGallery.querySelector('div').className = "p-1 mb-0.5";
+    }
+    if (navReviews) {
+      navReviews.className = inactiveNavStyle;
+      if (navReviews.querySelector('div')) navReviews.querySelector('div').className = "p-1 mb-0.5";
+    }
+
+    if (viewName === 'booking') {
+      if (viewBooking) viewBooking.classList.remove('hidden');
+      if (tabBooking) tabBooking.className = "py-3 px-3 rounded-2xl bg-[#521334] border-2 border-brand-gold text-brand-goldLight text-xs font-bold flex items-center justify-center gap-2 shadow-gold-sm transition-all";
+      if (tabGallery) tabGallery.className = "py-3 px-3 rounded-2xl bg-brand-card/80 hover:bg-brand-card border border-amber-500/20 text-gray-200 text-xs font-medium flex items-center justify-center gap-2 transition hover:text-brand-gold";
+      if (navRdv) {
+        navRdv.className = activeNavStyle;
+        if (navRdv.querySelector('div')) navRdv.querySelector('div').className = "p-1 rounded-xl bg-brand-gold/15 mb-0.5";
+      }
+    } else if (viewName === 'gallery') {
+      if (viewGallery) viewGallery.classList.remove('hidden');
+      if (tabGallery) tabGallery.className = "py-3 px-3 rounded-2xl bg-[#521334] border-2 border-brand-gold text-brand-goldLight text-xs font-bold flex items-center justify-center gap-2 shadow-gold-sm transition-all";
+      if (tabBooking) tabBooking.className = "py-3 px-3 rounded-2xl bg-brand-card/80 hover:bg-brand-card border border-amber-500/20 text-gray-200 text-xs font-medium flex items-center justify-center gap-2 transition hover:text-brand-gold";
+      if (navGallery) {
+        navGallery.className = activeNavStyle;
+        if (navGallery.querySelector('div')) navGallery.querySelector('div').className = "p-1 rounded-xl bg-brand-gold/15 mb-0.5";
+      }
+    } else if (viewName === 'reviews') {
+      if (viewReviews) viewReviews.classList.remove('hidden');
+      if (navReviews) {
+        navReviews.className = activeNavStyle;
+        if (navReviews.querySelector('div')) navReviews.querySelector('div').className = "p-1 rounded-xl bg-brand-gold/15 mb-0.5";
+      }
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Select Salon Function
+  function selectSalon(salonKey) {
+    state.selectedSalon = salonKey;
+    const cardSh = document.getElementById('salon-card-shakespeare');
+    const cardOp = document.getElementById('salon-card-opep');
+    const radSh = document.getElementById('radio-indicator-shakespeare');
+    const radOp = document.getElementById('radio-indicator-opep');
+
+    if (salonKey === 'shakespeare') {
+      cardSh.className = "p-3.5 rounded-xl border-2 border-brand-gold bg-[#420f2b] cursor-pointer transition active:scale-[0.99] flex flex-col gap-1.5 shadow-gold-sm";
+      cardOp.className = "p-3.5 rounded-xl border border-amber-400/20 bg-brand-input/50 hover:border-amber-400/40 cursor-pointer transition active:scale-[0.99] flex flex-col gap-1.5";
+      
+      radSh.className = "w-4 h-4 rounded-full border-2 border-brand-gold flex items-center justify-center bg-brand-gold";
+      radSh.querySelector('span').classList.remove('hidden');
+
+      radOp.className = "w-4 h-4 rounded-full border-2 border-amber-500/50 flex items-center justify-center bg-brand-wine";
+      radOp.querySelector('span').classList.add('hidden');
+    } else {
+      cardOp.className = "p-3.5 rounded-xl border-2 border-brand-gold bg-[#420f2b] cursor-pointer transition active:scale-[0.99] flex flex-col gap-1.5 shadow-gold-sm";
+      cardSh.className = "p-3.5 rounded-xl border border-amber-400/20 bg-brand-input/50 hover:border-amber-400/40 cursor-pointer transition active:scale-[0.99] flex flex-col gap-1.5";
+
+      radOp.className = "w-4 h-4 rounded-full border-2 border-brand-gold flex items-center justify-center bg-brand-gold";
+      radOp.querySelector('span').classList.remove('hidden');
+
+      radSh.className = "w-4 h-4 rounded-full border-2 border-amber-500/50 flex items-center justify-center bg-brand-wine";
+      radSh.querySelector('span').classList.add('hidden');
+    }
+    updateSummary();
+    updateStylistDropdownForSalon();
+  }
+
+  // Scroll to salon cards
+  function scrollToSalons() {
+    switchView('booking');
+    const el = document.getElementById('salon-card-shakespeare');
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  // Category Selector (Hommes, Femmes, Packs)
+  
+  // Updated Employees List per Salon
+  const SALON_EMPLOYEES_CONFIG = {
+    shakespeare: ['Marco', 'Mistorine', 'Merveille'],
+    opep: ['Aimerant', 'Clarisse', 'Brandone']
+  };
+
+  function updateStylistDropdownForSalon() {
+    const sel = document.getElementById('select-stylist');
+    if (!sel) return;
+
+    const employees = SALON_EMPLOYEES_CONFIG[state.selectedSalon] || ['Marco', 'Mistorine', 'Merveille'];
+    sel.innerHTML = '<option value="Premier disponible">Premier disponible (Recommandé)</option>';
+
+    employees.forEach(emp => {
+      const opt = document.createElement('option');
+      opt.value = emp;
+      opt.textContent = `${emp} (Coiffeur/Coiffeuse)`;
+      sel.appendChild(opt);
+    });
+
+    updateStylistAttribution();
+  }
+
+  function checkSpecialHintDismissed() {
+    if (localStorage.getItem('yg_dismissed_special_hint') === 'true') {
+      const el = document.getElementById('special-hint-box');
+      if (el) el.style.display = 'none';
+    }
+  }
+
+  function dismissSpecialHint() {
+    localStorage.setItem('yg_dismissed_special_hint', 'true');
+    const el = document.getElementById('special-hint-box');
+    if (el) el.style.display = 'none';
+  }
+
+  function handleReviewSubmit(e) {
+    e.preventDefault();
+    const name = document.getElementById('rev-name-input').value.trim();
+    const rating = document.getElementById('rev-rating-input').value;
+    const comment = document.getElementById('rev-comment-input').value.trim();
+
+    if (!name || !comment) return;
+
+    const feed = document.getElementById('reviews-feed');
+    if (!feed) return;
+
+    const escapeHtml = (str) => {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    };
+
+    const stars = "⭐".repeat(Number(rating));
+    const card = document.createElement('div');
+    card.className = "bg-[#240616] p-4 rounded-2xl border border-amber-500/20 space-y-2 shadow-md";
+    card.innerHTML = `
+      <div class="flex items-center justify-between text-sm">
+        <span class="font-bold text-brand-gold">${escapeHtml(name)}</span>
+        <span class="text-xs text-amber-200/60">À l'instant • ${stars}</span>
+      </div>
+      <p class="text-xs text-gray-200 leading-relaxed font-light">
+        "${escapeHtml(comment)}"
+      </p>
+    `;
+
+    feed.prepend(card);
+    document.getElementById('rev-comment-input').value = '';
+    showToast('Avis publié avec succès !');
+  }
+
+  function updatePreviewImage(catKey) {
+    const imgEl = document.getElementById('booking-preview-img');
+    const badgeEl = document.getElementById('booking-preview-badge');
+    if (!imgEl || !badgeEl) return;
+
+    if (catKey === 'femmes') {
+      imgEl.src = 'Prestation/Traisse Americaine par Clarisse.jpeg';
+      badgeEl.innerHTML = '✨ Modèle Coiffure Femme';
+    } else if (catKey === 'hommes') {
+      imgEl.src = 'Prestation/Coiffure avec Black par Aimerant.jpeg';
+      badgeEl.innerHTML = '💈 Modèle Coiffure Homme';
+    } else {
+      imgEl.src = 'Prestation/Dreadlocks par Aimerant.jpeg';
+      badgeEl.innerHTML = '🎁 Pack Soins & Esthétique';
+    }
+  }
+
+  function updateStylistAttribution() {
+    const stylistSelect = document.getElementById('select-stylist');
+    const attrEl = document.getElementById('booking-employee-attribution');
+    if (!stylistSelect || !attrEl) return;
+
+    const val = stylistSelect.value;
+    if (val && val !== 'Premier disponible') {
+      attrEl.innerHTML = `✂️ Fait par : <strong class="text-brand-goldLight">${val}</strong>`;
+    } else {
+      attrEl.innerHTML = `✂️ Fait par : Premier coiffeur/coiffeuse disponible`;
+    }
+  }
+
+function selectCategory(catKey) {
+    state.selectedCategory = catKey;
+
+    const btnH = document.getElementById('btn-cat-hommes');
+    const btnF = document.getElementById('btn-cat-femmes');
+    const btnP = document.getElementById('btn-cat-packs');
+    const badge = document.getElementById('category-badge');
+
+    const activeStyle = "w-full max-w-[200px] py-2 px-4 rounded-full bg-brand-gold text-brand-darkwine text-xs font-bold flex items-center justify-center gap-2 shadow-gold-glow transition";
+    const inactiveStyle = "w-full max-w-[200px] py-2 px-4 rounded-full bg-brand-wine/90 border border-amber-500/30 text-amber-200/90 text-xs font-semibold flex items-center justify-center gap-2 hover:bg-brand-card transition";
+
+    btnH.className = catKey === 'hommes' ? activeStyle : inactiveStyle;
+    btnF.className = catKey === 'femmes' ? activeStyle : inactiveStyle;
+    btnP.className = catKey === 'packs' ? activeStyle : inactiveStyle;
+
+    const labels = { hommes: 'Hommes', femmes: 'Femmes', packs: 'Packs' };
+    badge.textContent = labels[catKey];
+    updatePreviewImage(catKey);
+
+    // Pre-select first service of this category if current service isn't in it
+    const list = servicesCatalog[catKey];
+    state.selectedService = { name: list[0].name, price: list[0].price };
+
+    renderServicesList();
+    updateSummary();
+  }
+
+  // Render Services List
+  function renderServicesList() {
+    const container = document.getElementById('services-container');
+    const list = servicesCatalog[state.selectedCategory];
+
+    const escapeHtml = (str) => {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    };
+
+    container.innerHTML = list.map(item => {
+      const isSelected = item.name === state.selectedService.name;
+      const bgClass = isSelected 
+        ? "bg-[#420f2b] border-brand-gold/80 shadow-md ring-1 ring-brand-gold/40" 
+        : "bg-brand-input/70 border-amber-500/20 hover:border-amber-400/50";
+
+      return `
+        <div onclick="selectSpecificItem('${escapeQuotes(item.name)}', '${item.price}')" 
+             class="p-3 rounded-xl border flex items-center justify-between transition cursor-pointer active:scale-[0.99] ${bgClass}">
+          <div class="flex items-center gap-2.5">
+            <span class="w-2.5 h-2.5 rounded-full ${isSelected ? 'bg-brand-gold animate-pulse' : 'bg-amber-500/30'}"></span>
+            <div>
+              <div class="text-xs font-bold ${isSelected ? 'text-white' : 'text-gray-100'}">${escapeHtml(item.name)}</div>
+              <div class="text-[10px] text-amber-200/60 font-light">${escapeHtml(item.description)}</div>
+            </div>
+          </div>
+          <span class="text-xs font-bold ${isSelected ? 'text-brand-goldLight' : 'text-brand-gold'} font-mono">${escapeHtml(item.price)}</span>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function escapeQuotes(str) {
+    return str.replace(/'/g, "\\'");
+  }
+
+  function selectSpecificItem(name, price) {
+    state.selectedService = { name, price };
+    renderServicesList();
+    updateSummary();
+  }
+
+  // Book specific service from gallery cards directly
+  function bookSpecificService(category, serviceName, price) {
+    state.selectedCategory = category;
+    state.selectedService = { name: serviceName, price };
+    
+    selectCategory(category);
+    state.selectedService = { name: serviceName, price };
+    renderServicesList();
+    updateSummary();
+
+    // Switch view and show toast
+    switchView('booking');
+    showToast(`Prestation sélectionnée : ${serviceName} (${price})`);
+
+    // Scroll to date/time step
+    const dateSection = document.getElementById('input-date');
+    if (dateSection) {
+      setTimeout(() => {
+        dateSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 200);
+    }
+  }
+
+  // Update Summary preview
+  function updateSummary() {
+    const summaryPrice = document.getElementById('summary-price');
+    const summarySalon = document.getElementById('summary-salon');
+    const summaryService = document.getElementById('summary-service');
+    const summaryDateTime = document.getElementById('summary-datetime');
+
+    const dateVal = document.getElementById('input-date') ? document.getElementById('input-date').value : '2026-09-12';
+    const timeVal = document.getElementById('select-time') ? document.getElementById('select-time').value : '14:00';
+
+    if (summaryPrice) summaryPrice.textContent = `${state.selectedService.price} CFA`;
+    if (summarySalon) summarySalon.textContent = salonNames[state.selectedSalon];
+    if (summaryService) summaryService.textContent = `${state.selectedService.name} (${state.selectedCategory.toUpperCase()})`;
+    if (summaryDateTime) summaryDateTime.textContent = `${formatDateFrench(dateVal)} à ${timeVal}`;
+  }
+
+  function formatDateFrench(dateStr) {
+    if (!dateStr) return '12/09/2026';
+    const parts = dateStr.split('-');
+    if (parts.length === 3) {
+      return `${parts[2]}/${parts[1]}/${parts[0]}`;
+    }
+    return dateStr;
+  }
+
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    checkSpecialHintDismissed();
+    updateStylistDropdownForSalon();
+    const selStylist = document.getElementById('select-stylist');
+    if (selStylist) selStylist.addEventListener('change', updateStylistAttribution);
+  });
+  // Date and Time listeners for live summary update
+  document.getElementById('input-date').addEventListener('change', updateSummary);
+  document.getElementById('select-time').addEventListener('change', updateSummary);
+
+  // Gallery Filters
+  function filterGallery(category) {
+    const items = document.querySelectorAll('.gallery-item-card');
+    const pills = document.querySelectorAll('.gallery-pill');
+
+    pills.forEach(p => {
+      p.className = "gallery-pill py-1.5 px-4 rounded-full bg-brand-wine/80 border border-amber-400/30 text-amber-200 text-xs font-semibold whitespace-nowrap hover:bg-brand-card transition";
+    });
+    event.currentTarget.className = "gallery-pill active py-1.5 px-4 rounded-full bg-brand-gold text-brand-darkwine text-xs font-bold whitespace-nowrap shadow transition";
+
+    items.forEach(item => {
+      if (category === 'all') {
+        item.style.display = 'block';
+      } else {
+        const tags = item.getAttribute('data-tags') || '';
+        if (tags.includes(category)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      }
+    });
+  }
+
+  // Profile Modal Logic
+  function openProfileModal() {
+    try {
+      document.getElementById('modal-name-input').value = state.user.name;
+      document.getElementById('modal-quartier-input').value = state.user.quartier;
+      document.getElementById('modal-phone-input').value = state.user.phone;
+    } catch(e) {}
+    // Show modal FIRST, then sync data
+    document.getElementById('modal-profile').style.display = 'flex';
+    try { syncClientProfile(); } catch(e) { console.warn('syncClientProfile error:', e); }
+  }
+
+  function closeProfileModal() {
+    document.getElementById('modal-profile').style.display = 'none';
+  }
+
+  // Select Booking Mode (RDV vs Marquer Prestation)
+  function selectBookingMode(mode) {
+    state.bookingMode = mode;
+    const btnRdv = document.getElementById('btn-mode-rdv');
+    const btnPres = document.getElementById('btn-mode-presence');
+    const activeStyle = "py-2.5 px-2 rounded-xl bg-brand-gold text-brand-darkwine text-xs font-bold flex flex-col items-center justify-center border border-amber-400 shadow-md transition";
+    const inactiveStyle = "py-2.5 px-2 rounded-xl bg-brand-wine/90 border border-amber-500/30 text-amber-200 text-xs font-semibold flex flex-col items-center justify-center hover:bg-brand-card transition";
+
+    if (mode === 'rdv') {
+      if (btnRdv) btnRdv.className = activeStyle;
+      if (btnPres) btnPres.className = inactiveStyle;
+    } else {
+      if (btnPres) btnPres.className = activeStyle;
+      if (btnRdv) btnRdv.className = inactiveStyle;
+    }
+  }
+
+  // Real-Time Loyalty & Profile Sync
+  let clientLoyaltyUnsubscribe = null;
+  let clientHistoryUnsubscribe = null;
+
+  function determineLoyaltyCategory(serviceName, category) {
+    const sLower = (serviceName || '').toLowerCase();
+    const cLower = (category || '').toLowerCase();
+
+    // 1. Pédicures (5 pour 1 gratuite)
+    if (sLower.includes('pédicure') || sLower.includes('pedicure') || sLower.includes('manucure') || sLower.includes('pied')) {
+      return 'pedicuresCount';
+    }
+
+    // 2. Soin du Visage (7 pour 1 gratuit)
+    if (sLower.includes('visage') || sLower.includes('soin') || sLower.includes('gommage') || sLower.includes('hammam') || sLower.includes('hydra')) {
+      return 'soinsVisageCount';
+    }
+
+    // 3. Coiffures (Homme & Femme) (10 pour 1 gratuite)
+    // Prend en compte TOUTE coiffure homme ou femme
+    if (
+      cLower.includes('homme') || cLower.includes('femme') ||
+      sLower.includes('coiffure') || sLower.includes('coupe') || sLower.includes('black') ||
+      sLower.includes('teinture') || sLower.includes('barbe') || sLower.includes('rasage') ||
+      sLower.includes('dreadlock') || sLower.includes('twist') || sLower.includes('lace') ||
+      sLower.includes('mèche') || sLower.includes('meche') || sLower.includes('resta') ||
+      sLower.includes('tresse') || sLower.includes('tissage') || sLower.includes('perruque') ||
+      sLower.includes('extension') || sLower.includes('gainage') || sLower.includes('gel') ||
+      sLower.includes('shampoing') || sLower.includes('lavage') || sLower.includes('pack')
+    ) {
+      return 'coiffuresCount';
+    }
+
+    return 'coiffuresCount';
+  }
+
+  function syncClientProfile() {
+    if (typeof db === 'undefined') return;
+
+    const rawPhone = state.user.phone ? state.user.phone.toString() : '';
+    const phoneClean = rawPhone.replace(/\D/g, '') || rawPhone;
+    if (!phoneClean) return;
+
+    const clientRef = db.collection("clients").doc(phoneClean);
+
+    // Upsert customer info
+    clientRef.set({
+      name: state.user.name,
+      quartier: state.user.quartier,
+      phone: phoneClean,
+      lastActive: firebase.firestore.FieldValue.serverTimestamp()
+    }, { merge: true });
+
+    // Listen to fidelity counters
+    if (clientLoyaltyUnsubscribe) clientLoyaltyUnsubscribe();
+    clientLoyaltyUnsubscribe = clientRef.onSnapshot((doc) => {
+      if (doc.exists) {
+        const data = doc.data();
+        state.loyalty = {
+          coiffuresCount: data.coiffuresCount || 0,
+          pedicuresCount: data.pedicuresCount || 0,
+          soinsVisageCount: data.soinsVisageCount || 0
+        };
+        updateLoyaltyUI();
+      }
+    });
+
+    // Listen to recent reservations history for this client
+    if (clientHistoryUnsubscribe) clientHistoryUnsubscribe();
+    clientHistoryUnsubscribe = db.collection("reservations")
+      .onSnapshot(async (snapshot) => {
+        // Fetch client data to get reset timestamps
+        const clientDoc = await clientRef.get();
+        const clientData = clientDoc.exists ? clientDoc.data() : {};
+
+        const historyContainer = document.getElementById("profile-history-list");
+        
+        let calcCoiffures = 0;
+        let calcPedicures = 0;
+        let calcVisage = 0;
+
+        let hasItems = false;
+        if (historyContainer) historyContainer.innerHTML = "";
+
+        // Sort reservations by timestamp descending (newest first)
+        const sortedDocs = [];
+        snapshot.forEach(doc => sortedDocs.push(doc));
+        sortedDocs.sort((a, b) => {
+          const tA = a.data().timestamp ? a.data().timestamp.toMillis() : 0;
+          const tB = b.data().timestamp ? b.data().timestamp.toMillis() : 0;
+          return tB - tA;
+        });
+
+        sortedDocs.forEach(doc => {
+          const r = doc.data();
+          const p = (r.clientPhone || r.phone || '').toString().replace(/\D/g, '');
+          
+          if (p === phoneClean) {
+            const cat = determineLoyaltyCategory(r.serviceName, r.category);
+            let rDate;
+            if (r.timestamp) {
+              rDate = r.timestamp.toDate ? r.timestamp.toDate() : new Date(r.timestamp);
+            } else {
+              rDate = new Date(r.date && r.time ? `${r.date}T${r.time}:00` : (r.date || Date.now()));
+            }
+            
+            let isCounted = true;
+            
+            const parseResetDate = (rd) => rd ? (rd.toDate ? rd.toDate() : new Date(rd)) : null;
+            const fallbackReset = parseResetDate(clientData.lastRewardValidatedAt);
+            const cReset = parseResetDate(clientData.coiffuresResetAt) || fallbackReset;
+            const pReset = parseResetDate(clientData.pedicuresResetAt) || fallbackReset;
+            const vReset = parseResetDate(clientData.soinsVisageResetAt) || fallbackReset;
+
+            if (cat === 'coiffuresCount' && cReset && rDate <= cReset) isCounted = false;
+            if (cat === 'pedicuresCount' && pReset && rDate <= pReset) isCounted = false;
+            if (cat === 'soinsVisageCount' && vReset && rDate <= vReset) isCounted = false;
+
+            if (isCounted) {
+              hasItems = true;
+              if (cat === 'coiffuresCount') calcCoiffures++;
+              else if (cat === 'pedicuresCount') calcPedicures++;
+              else if (cat === 'soinsVisageCount') calcVisage++;
+
+              if (historyContainer) {
+                const stMap = {
+                  pending: '<span class="text-amber-400 font-bold">En attente</span>',
+                  confirmed: '<span class="text-blue-400 font-bold">Confirmé</span>',
+                  completed: '<span class="text-emerald-400 font-bold">Terminé</span>',
+                  cancelled: '<span class="text-red-400 font-bold">Annulé</span>'
+                };
+                const escapeHtml = (str) => {
+                  if (!str) return '';
+                  return String(str).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");
+                };
+                const item = document.createElement("div");
+                item.className = "p-2 rounded-lg bg-brand-wine/60 border border-amber-500/15 flex justify-between items-center";
+                item.innerHTML = `
+                  <div>
+                    <span class="text-white font-medium block">${escapeHtml(r.serviceName)}</span>
+                    <span class="text-amber-200/60 block text-[10px]">${escapeHtml(r.salonName || r.salonId)} • ${escapeHtml(r.date || '')} ${escapeHtml(r.time || '')}</span>
+                  </div>
+                  ${stMap[r.status] || stMap.pending}
+                `;
+                historyContainer.appendChild(item);
+              }
+            }
+          }
+        });
+
+        if (historyContainer && !hasItems) {
+          historyContainer.innerHTML = `<div class="text-amber-200/50 text-[11px] italic">Aucun rendez-vous récent.</div>`;
+        }
+
+        // Update in-memory loyalty state & UI immediately
+        state.loyalty = {
+          coiffuresCount: calcCoiffures,
+          pedicuresCount: calcPedicures,
+          soinsVisageCount: calcVisage
+        };
+        updateLoyaltyUI();
+
+        // Persist reconciled counts into Firestore client document (using set with merge)
+        clientRef.set({
+          coiffuresCount: state.loyalty.coiffuresCount,
+          pedicuresCount: state.loyalty.pedicuresCount,
+          soinsVisageCount: state.loyalty.soinsVisageCount
+        }, { merge: true }).catch(e => console.log(e));
+      }, err => console.log("History listener:", err));
+  }
+
+  function updateLoyaltyUI() {
+    const coiffures = state.loyalty.coiffuresCount || 0;
+    const pedicures = state.loyalty.pedicuresCount || 0;
+    const soinsVisage = state.loyalty.soinsVisageCount || 0;
+
+    const cTxt = document.getElementById('count-coiffure-txt');
+    const pTxt = document.getElementById('count-pedicure-txt');
+    const vTxt = document.getElementById('count-visage-txt');
+
+    if (cTxt) cTxt.textContent = `${coiffures} / 10`;
+    if (pTxt) pTxt.textContent = `${pedicures} / 5`;
+    if (vTxt) vTxt.textContent = `${soinsVisage} / 5`;
+
+    const cBar = document.getElementById('bar-coiffure');
+    const pBar = document.getElementById('bar-pedicure');
+    const vBar = document.getElementById('bar-visage');
+
+    if (cBar) cBar.style.width = `${Math.min(100, (coiffures / 10) * 100)}%`;
+    if (pBar) pBar.style.width = `${Math.min(100, (pedicures / 5) * 100)}%`;
+    if (vBar) vBar.style.width = `${Math.min(100, (soinsVisage / 5) * 100)}%`;
+
+    const banner = document.getElementById('loyalty-alert-banner');
+    const title = document.getElementById('loyalty-alert-title');
+    const desc = document.getElementById('loyalty-alert-desc');
+
+    if (banner) {
+      if (coiffures >= 10) {
+        banner.classList.remove('hidden');
+        if (title) title.textContent = "🎉 BRAVO ! COIFFURE GRATUITE DÉBLOQUÉE !";
+        if (desc) desc.textContent = "Présentez cet écran en salon à la patronne ou au coiffeur pour la valider.";
+      } else if (pedicures >= 5) {
+        banner.classList.remove('hidden');
+        if (title) title.textContent = "🎉 BRAVO ! PÉDICURE GRATUITE DÉBLOQUÉE !";
+        if (desc) desc.textContent = "Présentez cet écran en salon à la patronne ou la coiffeuse pour la valider.";
+      } else if (soinsVisage >= 5) {
+        banner.classList.remove('hidden');
+        if (title) title.textContent = "🎉 BRAVO ! SOIN DU VISAGE GRATUIT DÉBLOQUÉ !";
+        if (desc) desc.textContent = "Présentez cet écran en salon pour valider votre soin offert.";
+      } else {
+        banner.classList.add('hidden');
+      }
+    }
+  }
+
+  function saveProfile(e) {
+    e.preventDefault();
+    const newName = document.getElementById('modal-name-input').value.trim() || 'Steve Lionel';
+    const newQuartier = document.getElementById('modal-quartier-input').value.trim() || 'Nkoabang';
+    const newPhone = document.getElementById('modal-phone-input').value.trim() || '690731839';
+
+    state.user.name = newName;
+    state.user.quartier = newQuartier;
+    state.user.phone = newPhone;
+
+    document.getElementById('greeting-name').textContent = newName;
+    document.getElementById('greeting-location').textContent = `(${newQuartier})`;
+    document.getElementById('input-customer-name').value = newName;
+    document.getElementById('input-customer-quartier').value = newQuartier;
+    document.getElementById('input-customer-phone').value = newPhone;
+
+    syncClientProfile();
+    closeProfileModal();
+    showToast('Profil enregistré & synchronisé avec le salon !');
+  }
+
+  // Handle Booking Confirmation
+  function handleBookingSubmit() {
+    const custName = document.getElementById('input-customer-name').value.trim() || state.user.name;
+    const custQuartier = document.getElementById('input-customer-quartier').value.trim() || state.user.quartier;
+    const rawPhone = document.getElementById('input-customer-phone').value.trim() || state.user.phone;
+    const custPhoneClean = rawPhone.replace(/\D/g, '') || rawPhone;
+    const stylist = document.getElementById('select-stylist').value;
+    const dateVal = document.getElementById('input-date').value;
+    const timeVal = document.getElementById('select-time').value;
+
+    const randomRef = '#YG-' + Math.floor(1000 + Math.random() * 9000);
+
+    const priceNum = typeof state.selectedService.price === 'number' 
+      ? state.selectedService.price 
+      : (parseInt((state.selectedService.price || '').toString().replace(/\D/g, '')) || 0);
+
+    // Save appointment/presence in Firestore 'reservations' collection
+    if (typeof db !== 'undefined') {
+      const reservationData = {
+        ticketCode: randomRef,
+        clientName: custName,
+        clientQuartier: custQuartier,
+        clientPhone: custPhoneClean,
+        salonId: state.selectedSalon === 'shakespeare' ? 'salon_1' : 'salon_2',
+        salonName: salonNames[state.selectedSalon],
+        serviceName: state.selectedService.name,
+        price: priceNum,
+        category: state.selectedCategory,
+        employeeName: stylist,
+        date: dateVal,
+        time: timeVal,
+        bookingMode: state.bookingMode || 'rdv',
+        status: 'pending',
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      };
+
+      db.collection("reservations").add(reservationData)
+        .then(() => console.log("Réservation enregistrée avec succès dans 'reservations'"))
+        .catch(err => console.error("Erreur enregistrement réservation:", err));
+
+      // Update client loyalty counters
+      const clientRef = db.collection("clients").doc(custPhoneClean);
+      const incField = determineLoyaltyCategory(state.selectedService.name, state.selectedCategory);
+
+      clientRef.get().then(doc => {
+        const data = doc.exists ? doc.data() : {};
+        const currentVal = incField ? (data[incField] || 0) : 0;
+        let maxCap = 10;
+        if (incField === 'pedicuresCount') maxCap = 5;
+        if (incField === 'soinsVisageCount') maxCap = 5;
+
+        const updateObj = {
+          name: custName,
+          quartier: custQuartier,
+          phone: custPhoneClean,
+          lastActive: firebase.firestore.FieldValue.serverTimestamp()
+        };
+
+        if (incField && currentVal < maxCap) {
+          updateObj[incField] = firebase.firestore.FieldValue.increment(1);
+        }
+
+        return clientRef.set(updateObj, { merge: true });
+      }).catch(err => console.error("Erreur fidélité client:", err));
+    }
+
+    // Populate Success Modal
+    document.getElementById('succ-ref').textContent = randomRef;
+    document.getElementById('succ-name').textContent = `${custName} (${custQuartier})`;
+    document.getElementById('succ-salon').textContent = salonNames[state.selectedSalon];
+    document.getElementById('succ-service').textContent = `${state.selectedService.name} (${state.selectedCategory.toUpperCase()})`;
+    document.getElementById('succ-stylist').textContent = stylist;
+    document.getElementById('succ-time').textContent = state.bookingMode === 'presence' ? 'Immédiat (Présent au Salon)' : `${formatDateFrench(dateVal)} à ${timeVal}`;
+    document.getElementById('succ-price').textContent = `${priceNum.toLocaleString('fr-FR')} CFA`;
+    document.getElementById('succ-phone').textContent = custPhoneClean;
+
+    // Show modal
+    document.getElementById('modal-success').style.display = 'flex';
+  }
+
+  function closeSuccessModal() {
+    document.getElementById('modal-success').style.display = 'none';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    showToast('Réservation enregistrée au salon !');
+  }
+
+  // Show quick toast notification
+  function showToast(message) {
+    const toast = document.getElementById('toast-message');
+    const toastText = document.getElementById('toast-text');
+    toastText.textContent = message;
+    toast.classList.remove('hidden');
+    setTimeout(() => {
+      toast.classList.add('hidden');
+    }, 2800);
+  }
+</script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script src="js/config.js"></script>
+  <script>
+    // Real-Time Sync with Firestore database
+    if (typeof db !== 'undefined') {
+      db.collection("services").onSnapshot((snapshot) => {
+        if (!snapshot.empty) {
+          const liveHommes = [];
+          const liveFemmes = [];
+          const livePacks = [];
+
+          snapshot.forEach((doc) => {
+            const data = doc.data();
+            const item = {
+              id: doc.id,
+              name: data.name,
+              price: `${typeof data.price === 'number' ? data.price.toLocaleString('fr-FR') : data.price} F`,
+              description: data.description || 'Prestation officielle Yalo Glam\'s'
+            };
+
+            const typeLower = (data.type || '').toLowerCase();
+            const nameLower = (data.name || '').toLowerCase();
+
+            if (typeLower.startsWith('pack') || nameLower.includes('pack')) {
+              livePacks.push(item);
+            } else if (typeLower.includes('homme') || nameLower.includes('barbe') || nameLower.includes('black')) {
+              liveHommes.push(item);
+            } else {
+              liveFemmes.push(item);
+            }
+          });
+
+          if (liveHommes.length > 0) servicesCatalog.hommes = liveHommes;
+          if (liveFemmes.length > 0) servicesCatalog.femmes = liveFemmes;
+          if (livePacks.length > 0) servicesCatalog.packs = livePacks;
+
+          renderServicesList();
+        }
+      }, (err) => console.log('Firestore Live Sync initialized.'));
+    }
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').then(reg => reg.update()).catch(() => {});
+    }
+  </script>
+</body></html>

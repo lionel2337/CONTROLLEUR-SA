@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau de Bord Patronne - Contrôle du Salon</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2b0216">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <!-- ====== ÉCRAN DE CONNEXION ====== -->
+  <div id="login-screen" style="
+    position: fixed; inset: 0; z-index: 9999;
+    background: linear-gradient(135deg, #120009 0%, #2b0216 50%, #1a000f 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-family: 'Segoe UI', sans-serif;
+  ">
+    <!-- Fond décoratif -->
+    <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;">
+      <div style="position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(223,183,108,0.06),transparent);top:-100px;right:-100px;"></div>
+      <div style="position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(223,183,108,0.04),transparent);bottom:-50px;left:-50px;"></div>
+    </div>
+
+    <div style="
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(223,183,108,0.2);
+      border-radius: 24px;
+      padding: 48px 40px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+      position: relative;
+    ">
+      <!-- Logo -->
+      <img src="logo.png" alt="Yalo Glam's Logo" style="max-height:85px; border-radius:12px; margin-bottom:20px; box-shadow: 0 6px 20px rgba(0,0,0,0.4);" onerror="this.src='icon-192.png';">
+      
+      <div style="font-size:2rem;font-weight:800;letter-spacing:-1px;margin-bottom:4px;">
+        Yalo <span style="color:#dfb76c;">Glam's</span>
+      </div>
+      <div style="color:rgba(255,255,255,0.4);font-size:0.85rem;margin-bottom:32px;">Espace Patronne — Accès Privé</div>
+
+      <div id="login-error" style="
+        display:none;
+        background:rgba(239,68,68,0.12);
+        border:1px solid rgba(239,68,68,0.3);
+        color:#f87171;
+        border-radius:10px;
+        padding:10px 16px;
+        font-size:0.88rem;
+        margin-bottom:16px;
+      ">❌ Mot de passe incorrect. Réessayez.</div>
+
+      <div style="position:relative;margin-bottom:20px;">
+        <input
+          type="password"
+          id="login-password"
+          placeholder="Entrez votre mot de passe"
+          style="
+            width:100%; box-sizing:border-box;
+            background:#1a1a20;
+            border:1px solid rgba(255,255,255,0.1);
+            color:white;
+            padding:14px 50px 14px 18px;
+            border-radius:12px;
+            font-size:1rem;
+            outline:none;
+            transition:border-color 0.2s;
+          "
+          onfocus="this.style.borderColor='#dfb76c'"
+          onblur="this.style.borderColor='rgba(255,255,255,0.1)'"
+          onkeydown="if(event.key==='Enter') checkPassword()"
+        >
+        <span
+          onclick="togglePasswordVisibility()"
+          style="position:absolute;right:14px;top:50%;transform:translateY(-50%);cursor:pointer;font-size:1.1rem;opacity:0.5;user-select:none;"
+          id="eye-icon">👁️</span>
+      </div>
+
+      <button onclick="checkPassword()" style="
+        width:100%;
+        background: linear-gradient(135deg, #dfb76c, #c49a4a);
+        color: #120009;
+        border: none;
+        padding: 14px;
+        border-radius: 12px;
+        font-size: 1rem;
+        font-weight: 800;
+        cursor: pointer;
+        transition: opacity 0.2s;
+        letter-spacing: 0.5px;
+      " onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+        🔓 Accéder au tableau de bord
+      </button>
+
+      <div style="margin-top:20px;font-size:0.75rem;color:rgba(255,255,255,0.2);">
+        Accès réservé à la gérante · Yalo Glam's
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Vérification du mot de passe
+    function checkPassword() {
+      const input = document.getElementById('login-password').value;
+      const errBox = document.getElementById('login-error');
+      if (input === 'PATRON158') {
+        document.getElementById('login-screen').style.display = 'none';
+        sessionStorage.setItem('yg_auth', '1');
+      } else {
+        errBox.style.display = 'block';
+        document.getElementById('login-password').value = '';
+        document.getElementById('login-password').focus();
+        // Micro-animation de secousse
+        const card = errBox.closest('div[style*="border-radius: 24px"]') || errBox.parentElement;
+        card.style.animation = 'none';
+        setTimeout(() => card.style.animation = 'shake 0.4s ease', 10);
+      }
+    }
+    function togglePasswordVisibility() {
+      const inp = document.getElementById('login-password');
+      inp.type = inp.type === 'password' ? 'text' : 'password';
+    }
+    // Vérifier si déjà connecté dans cette session
+    if (sessionStorage.getItem('yg_auth') === '1') {
+      document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('login-screen').style.display = 'none';
+      });
+    }
+  </script>
+  <style>
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      20% { transform: translateX(-8px); }
+      40% { transform: translateX(8px); }
+      60% { transform: translateX(-5px); }
+      80% { transform: translateX(5px); }
+    }
+  </style>
+
+
+  <div class="app-container" style="max-width: 1400px; width: 98%; margin: 0 auto; padding: 20px;">
+    <!-- En-tête -->
+    <header style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 20px; margin-bottom: 20px;">
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <img id="logo-img" src="logo.png" alt="Yalo Glam's Logo" style="max-height: 60px; height: auto; display: block; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.4);" onerror="this.src='icon-192.png';">
+        <div>
+          <div class="logo" style="font-size: 1.8rem; font-weight: 800; font-family: var(--font-title);">Yalo <span>Glam's</span></div>
+          <div class="subtitle" style="font-size: 0.8rem;">Espace de contrôle & suivi en temps réel</div>
+        </div>
+      </div>
+      <button id="audio-btn" class="audio-status off" onclick="toggleAudio()">
+        <span id="audio-icon">🔈</span> <span id="audio-text">Alertes sonores</span>
+      </button>
+    </header>
+
+    <!-- Barre des filtres globaux -->
+    <div class="filters-bar" style="flex-wrap: wrap; gap: 12px; margin-bottom: 20px;">
+      <div class="filter-group">
+        <span class="filter-label">🏠 Salon :</span>
+        <select id="salon-filter" class="select-custom" onchange="onSalonFilterChange()">
+          <option value="all">Tous les Salons</option>
+          <option value="salon_1">Yalo Glam's Shakespeare</option>
+          <option value="salon_2">Yalo Glam's Opep</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">📅 Période :</span>
+        <select id="date-filter" class="select-custom" onchange="onDateFilterChange()">
+          <option value="today">Aujourd'hui</option>
+          <option value="yesterday">Hier</option>
+          <option value="month">Ce Mois-ci</option>
+          <option value="all">Tout l'historique</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- KPIs -->
+    <div class="stats-container" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 25px;">
+      <div class="stat-card">
+        <div class="stat-title">Recettes</div>
+        <div class="stat-value" id="stat-revenue" style="color: #22c55e; font-size: 1.5rem;">0<span>FCFA</span></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-title">Dépenses</div>
+        <div class="stat-value" id="stat-expenses" style="color: #ef4444; font-size: 1.5rem;">0<span>FCFA</span></div>
+      </div>
+      <div class="stat-card" style="border-left-color: var(--accent-gold);">
+        <div class="stat-title">Bénéfice Net</div>
+        <div class="stat-value" id="stat-profit" style="font-size: 1.5rem;">0<span>FCFA</span></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-title">Clients</div>
+        <div class="stat-value" id="stat-clients" style="font-size: 1.5rem;">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-title">Panier Moyen</div>
+        <div class="stat-value" id="stat-average" style="font-size: 1.5rem;">0<span>FCFA</span></div>
+      </div>
+    </div>
+
+    <!-- Onglets -->
+    <div class="tabs-header" style="flex-wrap: wrap; gap: 5px;">
+      <button class="tab-btn active" id="tab-live" onclick="switchTab('live')">💰 Ventes Direct</button>
+      <button class="tab-btn" id="tab-reservations" onclick="switchTab('reservations')">📅 Réservations</button>
+      <button class="tab-btn" id="tab-clients" onclick="switchTab('clients')">👥 Clientèle</button>
+      <button class="tab-btn" id="tab-performance" onclick="switchTab('performance')">🧑‍💼 Personnel</button>
+      <button class="tab-btn" id="tab-expenses" onclick="switchTab('expenses')">📊 Dépenses</button>
+      <button class="tab-btn" id="tab-presences" onclick="switchTab('presences')">📍 Présences</button>
+      <button class="tab-btn" id="tab-services" onclick="switchTab('services')">✂️ Tarifs</button>
+      <button class="tab-btn" id="tab-qrcodes" onclick="switchTab('qrcodes')">📲 QR Codes</button>
+    </div>
+
+    <!-- ===== ONGLET 1 : VENTES EN DIRECT ===== -->
+    <div id="content-live" class="tab-content active">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
+        <div style="font-size: 1rem; color: var(--text-muted);">Transactions enregistrées en temps réel</div>
+        <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+          <input type="text" id="search-live" class="input-custom" placeholder="🔍 Rechercher..." style="width: 220px; padding: 8px 14px;" oninput="filterLiveTable()">
+          <button class="btn-delete" onclick="deleteAllTransactions()" style="padding: 8px 14px; font-size: 0.85rem;">🗑️ Tout effacer</button>
+        </div>
+      </div>
+      <div class="table-container">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Heure</th>
+              <th>Salon</th>
+              <th>Employé(e)</th>
+              <th>Prestation</th>
+              <th>Montant</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="transactions-tbody">
+            <tr><td colspan="6" style="text-align:center; padding:40px; color:var(--text-muted);">Aucune transaction.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ===== ONGLET 2 : RÉSERVATIONS ===== -->
+    <div id="content-reservations" class="tab-content">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
+        <div style="font-size: 1rem; color: var(--text-muted);">Rendez-vous pris en ligne par les clients</div>
+        <input type="text" id="search-reservations" class="input-custom" placeholder="🔍 Rechercher..." style="width: 220px; padding: 8px 14px;" oninput="filterReservationsTable()">
+      </div>
+      <div class="table-container">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Client</th>
+              <th>Salon</th>
+              <th>Prestation</th>
+              <th>Coiffeur</th>
+              <th>Date & Heure</th>
+              <th>Statut</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="reservations-tbody">
+            <!-- Rempli en JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ===== ONGLET : CLIENTÈLE & FIDÉLITÉ ===== -->
+    <div id="content-clients" class="tab-content">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
+        <div style="font-size: 1rem; color: var(--text-muted);">Répertoire des clients inscrits & Suivi des compteurs de fidélité</div>
+        <input type="text" id="search-clients" class="input-custom" placeholder="🔍 Rechercher client, quartier, téléphone..." style="width: 280px; padding: 8px 14px;" oninput="filterClientsTable()">
+      </div>
+      <div class="table-container">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Client</th>
+              <th>Quartier</th>
+              <th>Téléphone / WhatsApp</th>
+              <th>💈 Coiffure (10)</th>
+              <th>💅 Pédicure (5)</th>
+              <th>🧴 Visage (5)</th>
+              <th>Statut Récompense</th>
+              <th>Action Validation</th>
+            </tr>
+          </thead>
+          <tbody id="clients-tbody">
+            <tr><td colspan="8" style="text-align:center; padding:40px; color:var(--text-muted);">Chargement de la clientèle...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ===== ONGLET 3 : PERSONNEL ===== -->
+    <div id="content-performance" class="tab-content">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
+        <div style="font-size: 1rem; color: var(--text-muted);">Chiffres générés par employé pour la période sélectionnée</div>
+        <input type="text" id="search-performance" class="input-custom" placeholder="🔍 Rechercher un employé..." style="width: 220px; padding: 8px 14px;" oninput="filterPerformanceTable()">
+      </div>
+      <div class="table-container">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Employé(e)</th>
+              <th>Rôle</th>
+              <th>Salon</th>
+              <th>Prestations</th>
+              <th>Chiffre Généré</th>
+            </tr>
+          </thead>
+          <tbody id="performance-tbody">
+            <!-- Rempli en JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ===== ONGLET 4 : DÉPENSES ===== -->
+    <div id="content-expenses" class="tab-content">
+      <div class="settings-layout">
+        <div class="panel-card">
+          <div class="panel-title">➕ Saisir une Dépense</div>
+          <form id="add-expense-form" onsubmit="addExpense(event)">
+            <div class="form-group">
+              <label class="form-label">Motif (ex: Shampoing, Électricité, Mèches...)</label>
+              <input type="text" id="expense-title-input" class="input-custom" placeholder="Tapez le motif..." required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Montant (FCFA)</label>
+              <input type="number" id="expense-amount-input" class="input-custom" placeholder="Ex: 5000" min="0" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Salon concerné</label>
+              <select id="expense-salon-input" class="select-custom" style="width: 100%;" required>
+                <option value="salon_1">Yalo Glam's Shakespeare</option>
+                <option value="salon_2">Yalo Glam's Opep</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-confirm btn-submit" style="background: #ef4444; color: white;">Enregistrer la Dépense</button>
+          </form>
+        </div>
+        <div class="panel-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+            <div class="panel-title" style="margin-bottom: 0;">📋 Historique des Dépenses</div>
+            <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+              <input type="text" id="search-expenses" class="input-custom" placeholder="🔍 Rechercher..." style="width: 160px; padding: 7px 12px; font-size: 0.85rem;" oninput="filterExpensesList()">
+              <button class="btn-delete" onclick="deleteAllExpenses()" style="padding: 7px 12px; font-size: 0.82rem; white-space: nowrap;">🗑️ Tout effacer</button>
+            </div>
+          </div>
+          <div id="expenses-settings-list" style="max-height: 450px; overflow-y: auto;">
+            <!-- Rempli en JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== ONGLET 5 : PRÉSENCES ===== -->
+    <div id="content-presences" class="tab-content">
+      <div class="settings-layout" style="grid-template-columns: 1fr 1.3fr;">
+        <div class="panel-card">
+          <div class="panel-title" style="display: flex; justify-content: space-between; align-items: center;">
+            <span>🔑 Codes du Jour</span>
+            <span id="presence-today-date" style="font-size: 0.8rem; color: var(--accent-gold); font-family: var(--font-body);">--</span>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">
+            Transmettez ces codes à vos employés chaque matin pour valider leur présence.
+          </p>
+          <div id="daily-codes-container"><!-- Rempli en JS --></div>
+          <button class="btn btn-cancel" style="width: 100%; margin-top: 15px; font-size: 0.9rem;" onclick="generateOrRegenerateDailyCodes()">
+            🔄 Générer nouveaux codes
+          </button>
+        </div>
+        <div class="panel-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+            <div class="panel-title" style="margin-bottom: 0;">📍 Suivi des Arrivées</div>
+            <input type="text" id="search-presences" class="input-custom" placeholder="🔍 Rechercher..." style="width: 160px; padding: 7px 12px; font-size: 0.85rem;" oninput="filterPresencesTable()">
+          </div>
+          <div class="table-container" style="border: none;">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Employé(e)</th>
+                  <th>Salon</th>
+                  <th>Heure</th>
+                  <th>Statut</th>
+                </tr>
+              </thead>
+              <tbody id="presences-tbody"><!-- Rempli en JS --></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== ONGLET 6 : TARIFS / SERVICES ===== -->
+    <div id="content-services" class="tab-content">
+      <div class="settings-layout">
+        <div class="panel-card">
+          <div class="panel-title">✂️ Prestations proposées</div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; flex-wrap: wrap;">
+            <select id="services-salon-select" class="select-custom" style="padding: 7px 12px; font-size: 0.9rem;" onchange="loadServicesSettings()">
+              <option value="salon_1">Yalo Glam's Shakespeare</option>
+              <option value="salon_2">Yalo Glam's Opep</option>
+            </select>
+            <input type="text" id="search-services" class="input-custom" placeholder="🔍 Rechercher..." style="flex: 1; min-width: 120px; padding: 7px 12px; font-size: 0.9rem;" oninput="filterServicesList()">
+          </div>
+          <div id="services-settings-list">
+            <div style="padding: 20px; text-align: center; color: var(--text-muted);">Chargement...</div>
+          </div>
+        </div>
+        <div class="panel-card">
+          <div class="panel-title">➕ Ajouter une prestation</div>
+          <form id="add-service-form" onsubmit="addService(event)">
+            <div class="form-group">
+              <label class="form-label">Nom de la prestation</label>
+              <input type="text" id="service-name-input" class="input-custom" placeholder="Ex: Coupe Homme, Manucure..." required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tarif en FCFA</label>
+              <input type="number" id="service-price-input" class="input-custom" placeholder="Ex: 500" min="0" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Catégorie</label>
+              <select id="service-type-input" class="select-custom" style="width: 100%;" required>
+                <option value="coiffure_homme">👨 Coiffure Homme</option>
+                <option value="soin">🧴 Soin / Esthétique</option>
+                <option value="coiffure_femme">💇‍♀️ Coiffure Femme / Onglerie</option>
+                <option value="pack_femme">🎁 Pack Dame</option>
+                <option value="pack_homme">🎁 Pack Homme</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Description (optionnel)</label>
+              <input type="text" id="service-desc-input" class="input-custom" placeholder="Contenu du pack, détails...">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Salon</label>
+              <select id="service-salon-input" class="select-custom" style="width: 100%;" required>
+                <option value="both">📍 Les deux salons (Shakespeare & Opep)</option>
+                <option value="salon_1">Yalo Glam's Shakespeare</option>
+                <option value="salon_2">Yalo Glam's Opep</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-confirm btn-submit">Enregistrer la prestation</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== ONGLET 7 : QR CODES ===== -->
+    <div id="content-qrcodes" class="tab-content">
+      <div class="settings-layout" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+        <div class="panel-card" style="text-align: center;">
+          <div class="panel-title">📱 Écran Client (Tablette Salon)</div>
+          <p style="color: var(--text-muted); margin-bottom: 15px; font-size: 0.9rem;">Interface de caisse pour les coiffeurs.</p>
+          <div style="background: white; padding: 12px; display: inline-block; border-radius: 12px; margin-bottom: 12px; max-width: 100%;">
+            <img id="qr-client" src="" alt="QR Code Client" style="display: block; width: 180px; max-width: 100%; height: auto; margin: 0 auto;">
+          </div>
+          <div style="font-size: 0.78rem; word-break: break-all; color: var(--accent-gold); font-weight: 600;" id="url-client">--</div>
+        </div>
+        <div class="panel-card" style="text-align: center;">
+          <div class="panel-title">📅 Réservation Clients (Cartes / Réseaux)</div>
+          <p style="color: var(--text-muted); margin-bottom: 15px; font-size: 0.9rem;">Partagez ce QR Code sur vos cartes, WhatsApp, Instagram.</p>
+          <div style="background: white; padding: 12px; display: inline-block; border-radius: 12px; margin-bottom: 12px; max-width: 100%;">
+            <img id="qr-reservation" src="" alt="QR Code Réservation" style="display: block; width: 180px; max-width: 100%; height: auto; margin: 0 auto;">
+          </div>
+          <div style="font-size: 0.78rem; word-break: break-all; color: var(--accent-gold); font-weight: 600;" id="url-reservation">--</div>
+        </div>
+        <div class="panel-card" style="text-align: center;">
+          <div class="panel-title">👑 Écran Patronne</div>
+          <p style="color: var(--text-muted); margin-bottom: 15px; font-size: 0.9rem;">Votre accès privé pour surveiller à distance.</p>
+          <div style="background: white; padding: 12px; display: inline-block; border-radius: 12px; margin-bottom: 12px; max-width: 100%;">
+            <img id="qr-admin" src="" alt="QR Code Admin" style="display: block; width: 180px; max-width: 100%; height: auto; margin: 0 auto;">
+          </div>
+          <div style="font-size: 0.78rem; word-break: break-all; color: var(--accent-gold); font-weight: 600;" id="url-admin">--</div>
+        </div>
+      </div>
+    </div>
+
+    <footer style="margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; text-align: center;">
+      <p style="font-size: 0.8rem; color: var(--text-muted);">Yalo Glam's — Connecté en temps réel · Firestore</p>
+    </footer>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').then(reg => reg.update()).catch(() => {});
+    }
+  </script>
+</body>
+</html>
